@@ -1,0 +1,37 @@
+Space Encyclopedia - draft class descriptions
+
+SpaceObject
+Base class for all objects in space
+Properties: name, type, description,(others if needed)
+Methods: basic access to object information
+
+Planet
+Inherits from SpaceObject
+Additional properties: radius, distanceFromSun, (others if needed)
+Methods: access planet-specific data
+
+Star
+Inherits from SpaceObject
+Additional properties: luminosity, distanceFromEarth, (others if needed)
+Methods: access star-specific data
+
+Galaxy
+Inherits from SpaceObject
+Additional properties: numberOfStars, galaxyType, (others if needed)
+Methods: access galaxy-specific data
+
+EncyclopediaManager
+Stores all space objects in lists, arrays, or other collections
+Provides search by name or type
+Can filter by category (Planet, Star, Galaxy)
+Can compare two objects (or implement other functionality)
+
+FavoritesManager (additional feature)
+Stores user-selected favorite objects
+Allows adding and removing favorites
+
+GUI Classes
+Simple interface for interacting with objects
+Displays list of objects and object details
+Allows search, filtering, and comparison (or other interactions)
+
