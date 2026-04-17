@@ -16,7 +16,7 @@ public class Planet extends SpaceObject{
         this.numberOfMoons = numberOfMoons;
     }
     public Planet(Planet other){
-        super(name, type, discription);
+        super(other.getName(), other.getType(), other.getDescription());
         this.radius = other.radius;
         this.mass = other.mass;
         this.mass = other.mass;
