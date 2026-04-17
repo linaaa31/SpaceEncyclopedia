@@ -10,7 +10,11 @@ public class SpaceObject {
         this.type = type;
         this.description = description;
     }
-
+    public SpaceObject(SpaceObject other){
+        this.name = other.name;
+        this.type = other.type;
+        this.description = other.description;
+    }
     public String getName() {
         return name;
     }
