@@ -22,7 +22,7 @@ public class Main {
                      "Sun", "Star", "The star at the center of the Solar System.", 1.0,
                      0, 5778);
             milkyWay = new Galaxy("Milky Way", "Galaxy", "The galaxy that contains our Solar System.",
-                    1000000000, "Spiral", 0);
+                    1000000000, "Spiral");
         } catch (InvalidSpaceObjectException e) {
             System.out.println(e.getMessage());
         }
