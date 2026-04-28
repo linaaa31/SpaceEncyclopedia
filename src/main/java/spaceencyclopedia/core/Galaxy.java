@@ -37,4 +37,15 @@ public class Galaxy extends SpaceObject {
         return super.toString() +
                 "\nNumber of stars: " + numberOfStars + "\nGalaxy type: " + galaxyType + "\nDistance from Earth: " + distanceFromEarth;
     }
+    public boolean equals(Object otherObject){
+        if(otherObject == null) return false;
+        if(getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Galaxy other = (Galaxy) otherObject;
+        return super.equals(otherObject) &&
+                this.numberOfStars == other.numberOfStars
+                && this.distanceFromEarth == other.distanceFromEarth
+                && this.galaxyType.equals(other.galaxyType);
+    }
 }

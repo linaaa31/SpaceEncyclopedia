@@ -39,4 +39,15 @@ public class Star extends SpaceObject {
                 "\nDistance from Earth: " + distanceFromEarth +
                 "\nTemperature: " + temperature;
     }
+    public boolean equals(Object otherObject){
+        if(otherObject == null) return false;
+        if(getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Star other = (Star) otherObject;
+        return super.equals(otherObject) &&
+                this.luminosity == other.luminosity
+                && this.distanceFromEarth == other.distanceFromEarth
+                && this.temperature == other.temperature;
+    }
 }

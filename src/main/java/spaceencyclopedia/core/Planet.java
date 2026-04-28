@@ -58,4 +58,18 @@ public class Planet extends SpaceObject{
         return super.toString() +
                 "\nRadius: " + radius + "\nMass: " + mass + "\nDistance from Sun: " + distanceFromSun + "\nHas rings: " + hasRings + "\nNumber of moons: " + numberOfMoons;
     }
+    public boolean equals(Object otherObject){
+        if(otherObject == null) return false;
+        if(getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Planet other = (Planet) otherObject;
+        return super.equals(otherObject) &&
+                this.radius == other.radius
+                && this.mass == other.mass
+                && this.distanceFromSun == other.distanceFromSun
+                && this.hasRings == other.hasRings
+                && this.numberOfMoons == other.numberOfMoons;
+
+    }
 }
