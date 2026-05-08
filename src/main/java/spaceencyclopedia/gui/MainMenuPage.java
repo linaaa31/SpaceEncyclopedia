@@ -31,7 +31,7 @@ public class MainMenuPage extends BasePage {
 
     public MainMenuPage() {
         super("Milky Way Menu");
-        this.manager = manager;
+        this.manager = new EncyclopediaManager();
         BackgroundPanel panel =
                 new BackgroundPanel("/spaceencyclopedia/images/img.png");
         panel.setLayout(new GridBagLayout());

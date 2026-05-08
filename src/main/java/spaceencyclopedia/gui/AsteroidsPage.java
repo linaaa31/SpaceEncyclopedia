@@ -83,9 +83,8 @@ public class AsteroidsPage extends BasePage {
 
         // ===== BACK BUTTON =====
         backButton = createButton("Back");
-
         backButton.addActionListener(e -> {
-            new MainMenuPage(manager).setVisible(true);
+            new MainMenuPage().setVisible(true);
             dispose();
         });
 
@@ -115,9 +114,6 @@ public class AsteroidsPage extends BasePage {
         scrollPane.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
         );
-        contentPanel.setPreferredSize(
-                new Dimension(this.getWidth(), 1500)
-        );
         scrollPane.setOpaque(false);
         scrollPane.getViewport().setOpaque(false);
         scrollPane.setBorder(null);
@@ -125,7 +121,24 @@ public class AsteroidsPage extends BasePage {
 
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         backgroundPanel.add(scrollPane, BorderLayout.CENTER);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
 
+            @Override
+            public void componentResized(
+                    java.awt.event.ComponentEvent e
+            ) {
+
+                int width = getWidth();
+
+                title.setFont(
+                        new Font("Serif", Font.BOLD, width / 18)
+                );
+
+                descriptionArea.setFont(
+                        new Font("Serif", Font.PLAIN, width / 45)
+                );
+            }
+        });
         add(backgroundPanel);
     }
 
