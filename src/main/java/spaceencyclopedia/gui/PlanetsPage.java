@@ -106,21 +106,12 @@ public class PlanetsPage extends BasePage {
             int w = getWidth();
             int h = getHeight();
 
-//            drawBackground(g2, w, h);
+
 
             drawOrbits(g2, w, h);
         }
 
-//        private void drawBackground(Graphics2D g2, int w, int h) {
-//            ImageIcon bgIcon = loadImage("/spaceencyclopedia/images/img.png");
-//
-//            if (bgIcon != null) {
-//                g2.drawImage(bgIcon.getImage(), 0, 0, w, h, this);
-//            } else {
-//                g2.setColor(Color.BLACK);
-//                g2.fillRect(0, 0, w, h);
-//            }
-//        }
+
 
 
 
@@ -214,7 +205,5 @@ public class PlanetsPage extends BasePage {
 
 
 
-    static void main() {
-        new PlanetsPage().setVisible(true);
-    }
+
 }

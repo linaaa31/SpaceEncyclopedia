@@ -40,6 +40,12 @@ public class MainMenuPage extends BasePage {
         menuPanel.setLayout(new BoxLayout(menuPanel, 1));
         this.title = this.createLabel("MILKY WAY MENU", 40, 1);
         this.planetsButton = this.createButton("Planets");
+        this.planetsButton.addActionListener(e -> {
+            new PlanetsPage().setVisible(true);
+            dispose();
+        });
+
+        this.dwarfPlanetsButton = this.createButton("Dwarf Planets");
         this.dwarfPlanetsButton = this.createButton("Dwarf Planets");
         this.moonsButton = this.createButton("Moons");
         this.starsButton = this.createButton("Stars");
