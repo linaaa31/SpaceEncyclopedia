@@ -25,63 +25,74 @@ public class AsteroidsPage extends BasePage {
                 new BackgroundPanel("/spaceencyclopedia/images/asteroidBackground.jpg");
 
         backgroundPanel.setLayout(new BorderLayout());
-
-        // ===== MAIN CONTENT PANEL =====
         JPanel contentPanel = new JPanel();
         contentPanel.setOpaque(false);
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.setMaximumSize(new Dimension(900, Integer.MAX_VALUE));
         contentPanel.setBorder(new EmptyBorder(30, 50, 30, 50));
+        contentPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JScrollPane scrollPane = new JScrollPane(contentPanel);
 
-        // ===== TITLE =====
-        title = createLabel("ASTEROIDS", 45, Font.BOLD);
-
-        // ===== GENERAL DESCRIPTION =====
-        descriptionArea = new JTextArea(
-                "Asteroids are rocky objects that orbit the Sun. "
-                        + "Millions of asteroids exist in our Solar System, "
-                        + "especially in the Asteroid Belt between Mars and Jupiter. "
-                        + "They vary greatly in size, shape, and composition. "
-                        + "Some are only a few meters wide, while others are hundreds "
-                        + "of kilometers across. Scientists study asteroids to learn "
-                        + "more about the early Solar System."
+        scrollPane.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
         );
 
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
+        scrollPane.setOpaque(false);
+        scrollPane.getViewport().setOpaque(false);
+        scrollPane.setBorder(null);
+
+        backgroundPanel.add(scrollPane, BorderLayout.CENTER);
+        title = createLabel("ASTEROIDS", 45, Font.BOLD);
+        descriptionArea = new JTextArea(
+                "Asteroids are small rocky objects that orbit the Sun. Most asteroids are located in the " +
+                        "Asteroid Belt between Mars and Jupiter, although some travel closer to Earth. " +
+                        "They are considered leftovers from the early formation of the Solar System over 4.5 billion " +
+                        "years ago. Asteroids vary greatly in size, shape, and composition. " +
+                        "Some are made mostly of rock," +
+                        " while others contain metals such as iron and nickel.\n" +
+                        "\n" +
+                        "Scientists study asteroids to better understand the history of the Solar System " +
+                        "and the formation of planets. Some asteroids are especially well known because of their size," +
+                        " unusual characteristics, or importance in space exploration. " +
+                        "Among the most famous examples are Vesta, Eros, and Pallas."
+        );
         descriptionArea.setWrapStyleWord(true);
         descriptionArea.setLineWrap(true);
         descriptionArea.setEditable(false);
-
         descriptionArea.setFont(new Font("Serif", Font.PLAIN, 24));
-
         descriptionArea.setForeground(Color.WHITE);
-
         descriptionArea.setOpaque(false);
-
         descriptionArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // ===== ASTEROID EXAMPLES =====
-
         JPanel asteroidPanel1 = createAsteroidPanel(
                 "Vesta",
-                "/spaceencyclopedia/images/vesta.jpg",
-                "Vesta is one of the largest asteroids in the Solar System. "
-                        + "It has a rocky surface and a massive crater near its south pole."
+                "/spaceencyclopedia/images/vestaAsteroid.png",
+                "Vesta is one of the largest objects in the Asteroid Belt and is sometimes described" +
+                        " as a protoplanet because of its layered internal structure. " +
+                        "Its surface contains enormous craters created by powerful collisions that occurred " +
+                        "millions of years ago. NASA’s Dawn spacecraft studied Vesta in detail and discovered " +
+                        "mountains, valleys, and signs of ancient volcanic activity."
         );
 
         JPanel asteroidPanel2 = createAsteroidPanel(
                 "Eros",
-                "/spaceencyclopedia/images/eros.jpg",
-                "Eros is a near-Earth asteroid discovered in 1898. "
-                        + "It was visited by NASA's NEAR Shoemaker spacecraft."
+                "/spaceencyclopedia/images/eros.png",
+                "Eros is a near-Earth asteroid discovered in 1898. It became historically important" +
+                        " because it was the first asteroid successfully orbited and landed on by a spacecraft " +
+                        "during the NEAR Shoemaker mission. Eros has an elongated shape and follows an orbit " +
+                        "that occasionally brings it relatively close to Earth."
         );
 
         JPanel asteroidPanel3 = createAsteroidPanel(
                 "Pallas",
-                "/spaceencyclopedia/images/pallas.jpg",
-                "Pallas is one of the first asteroids ever discovered. "
-                        + "It has an unusual tilted orbit around the Sun."
+                "/spaceencyclopedia/images/pallasImage.png",
+                "Pallas is one of the largest asteroids in the Solar System and was discovered in 1802. " +
+                        "Unlike many asteroids, it has a strongly tilted orbit around the Sun. Scientists believe " +
+                        "that Pallas may contain water-rich materials beneath its surface, making it an important " +
+                        "object for scientific research."
         );
 
-        // ===== BACK BUTTON =====
         backButton = createButton("Back");
         backButton.addActionListener(e -> {
             new MainMenuPage().setVisible(true);
@@ -90,7 +101,6 @@ public class AsteroidsPage extends BasePage {
 
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // ===== ADD COMPONENTS =====
         contentPanel.add(title);
         contentPanel.add(Box.createVerticalStrut(30));
 
@@ -108,18 +118,16 @@ public class AsteroidsPage extends BasePage {
 
         contentPanel.add(backButton);
 
-        // ===== SCROLL PANE =====
-        JScrollPane scrollPane = new JScrollPane(contentPanel);
-
         scrollPane.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
         );
+
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
         scrollPane.setOpaque(false);
         scrollPane.getViewport().setOpaque(false);
         scrollPane.setBorder(null);
 
-
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         backgroundPanel.add(scrollPane, BorderLayout.CENTER);
         addComponentListener(new java.awt.event.ComponentAdapter() {
 
@@ -152,7 +160,7 @@ public class AsteroidsPage extends BasePage {
 
         panel.setLayout(new BorderLayout(20, 20));
 
-        // ===== IMAGE =====
+
         JLabel imageLabel = new JLabel();
 
         java.net.URL imageURL = getClass().getResource(imagePath);
@@ -175,7 +183,7 @@ public class AsteroidsPage extends BasePage {
             imageLabel.setForeground(Color.WHITE);
         }
 
-        // ===== TEXT =====
+
         JPanel textPanel = new JPanel();
 
         textPanel.setOpaque(false);
