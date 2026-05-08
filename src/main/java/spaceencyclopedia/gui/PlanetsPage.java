@@ -8,7 +8,12 @@ public class PlanetsPage extends BasePage {
 
     public PlanetsPage() {
         super("Planets");
-        setContentPane(new SolarSystemPanel());
+        BackgroundPanel backgroundPanel =
+                new BackgroundPanel("/spaceencyclopedia/images/img_1.png");
+        backgroundPanel.setLayout(new BorderLayout());
+        backgroundPanel.add(new SolarSystemPanel(),
+                BorderLayout.CENTER);
+        setContentPane(backgroundPanel);
     }
 
     private class SolarSystemPanel extends JPanel {
@@ -24,7 +29,7 @@ public class PlanetsPage extends BasePage {
 
         public SolarSystemPanel() {
             setLayout(null);
-
+            setOpaque(false);
             title = createLabel("PLANETS", 48, Font.BOLD);
             add(title);
 
@@ -39,7 +44,7 @@ public class PlanetsPage extends BasePage {
                 add(button);
             }
 
-            backButton = createButton("← Back");
+            backButton = createButton("Back");
             backButton.setFont(new Font("Arial", Font.BOLD, 16));
 
             backButton.addActionListener(e -> {
@@ -49,8 +54,6 @@ public class PlanetsPage extends BasePage {
 
             add(backButton);
         }
-
-        @Override
         public void doLayout() {
             int w = getWidth();
             int h = getHeight();
@@ -92,12 +95,8 @@ public class PlanetsPage extends BasePage {
             }
         }
 
-        @Override
         protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-
             Graphics2D g2 = (Graphics2D) g;
-
             g2.setRenderingHint(
                     RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON
@@ -105,8 +104,6 @@ public class PlanetsPage extends BasePage {
 
             int w = getWidth();
             int h = getHeight();
-
-
 
             drawOrbits(g2, w, h);
         }
