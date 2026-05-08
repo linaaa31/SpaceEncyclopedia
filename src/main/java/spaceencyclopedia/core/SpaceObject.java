@@ -2,7 +2,7 @@ package spaceencyclopedia.core;
 
 import spaceencyclopedia.exception.InvalidSpaceObjectException;
 
-public class SpaceObject {
+public abstract class SpaceObject {
     private String name;
     private String type;
     private String description;
