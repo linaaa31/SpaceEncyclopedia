@@ -7,7 +7,7 @@ public abstract class BasePage extends JFrame {
     public BasePage(String title) {
         setTitle(title);
 
-        setSize(800, 500);
+        setSize(1600, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -22,6 +22,8 @@ public abstract class BasePage extends JFrame {
     protected JButton createButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 18));
+        button.setBackground(Color.WHITE);
+        button.setForeground(Color.BLACK);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         return button;
     }

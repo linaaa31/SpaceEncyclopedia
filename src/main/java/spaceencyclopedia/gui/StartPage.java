@@ -14,7 +14,8 @@ public class StartPage extends BasePage {
 
         this.manager = manager;
 
-        BackgroundPanel panel = new BackgroundPanel();
+        BackgroundPanel panel =
+                new BackgroundPanel("/spaceencyclopedia/images/img.png");
         panel.setLayout(new GridBagLayout());
 
         JLabel title = createLabel("SPACE ENCYCLOPEDIA", 50, Font.BOLD);

@@ -32,7 +32,8 @@ public class MainMenuPage extends BasePage {
     public MainMenuPage() {
         super("Milky Way Menu");
         this.manager = manager;
-        BackgroundPanel panel = new BackgroundPanel();
+        BackgroundPanel panel =
+                new BackgroundPanel("/spaceencyclopedia/images/img.png");
         panel.setLayout(new GridBagLayout());
         JPanel menuPanel = new JPanel();
         menuPanel.setOpaque(false);
@@ -49,6 +50,12 @@ public class MainMenuPage extends BasePage {
         this.funFactsButton = this.createButton("Fun Facts");
         this.favoritesButton = this.createButton("Favorites");
         this.searchButton = this.createButton("Search");
+        this.asteroidsButton = this.createButton("Asteroids");
+
+        this.asteroidsButton.addActionListener(e -> {
+            new AsteroidsPage(manager).setVisible(true);
+            dispose();
+        });
         JPanel gridPanel = new JPanel();
         gridPanel.setOpaque(false);
         gridPanel.setLayout(new GridLayout(5, 2, 20, 15));
