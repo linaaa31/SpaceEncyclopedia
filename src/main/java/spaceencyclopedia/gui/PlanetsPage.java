@@ -54,6 +54,23 @@ public class PlanetsPage extends BasePage {
 
             add(backButton);
         }
+        private void drawSun(Graphics2D g2, int h){
+
+            ImageIcon sunIcon =
+                    loadImage("/spaceencyclopedia/images/sun.png");
+
+            if (sunIcon != null){
+
+                g2.drawImage(
+                        sunIcon.getImage(),
+                        -350,
+                        h / 2 - 250,
+                        500,
+                        500,
+                        this
+                );
+            }
+        }
         public void doLayout() {
             int w = getWidth();
             int h = getHeight();
@@ -104,7 +121,7 @@ public class PlanetsPage extends BasePage {
 
             int w = getWidth();
             int h = getHeight();
-
+            drawSun(g2,h);
             drawOrbits(g2, w, h);
         }
 
@@ -153,7 +170,6 @@ public class PlanetsPage extends BasePage {
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.setOpaque(false);
-
         return button;
     }
 
@@ -167,7 +183,6 @@ public class PlanetsPage extends BasePage {
             System.out.println("Image not found: " + path);
             return null;
         }
-
         int originalWidth = originalIcon.getIconWidth();
         int originalHeight = originalIcon.getIconHeight();
 
@@ -186,7 +201,6 @@ public class PlanetsPage extends BasePage {
                 height,
                 Image.SCALE_SMOOTH
         );
-
         return new ImageIcon(scaledImage);
     }
 
