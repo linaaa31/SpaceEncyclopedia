@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class EncyclopediaManager {
     private ArrayList<SpaceObject> objects;
-//    public void loadSampleData() {
+    public void loadSampleData() {
 //        addObject(new Planet("Earth", "Planet", "The planet we live on.", 6371, 5.97, 149.6, false, 1));
 //        addObject(new Planet("Saturn", "Planet", "A gas giant with rings.", 58232, 568, 1434, true, 146));
 //        addObject(new Star("Sun", "Star", "The center of our Solar System.", 1.0, 0, 5778));
 //        addObject(new Galaxy("Milky Way", "Galaxy", "Our galaxy.", 1000000000, "Spiral", 0));
-//    }
+    }
     public EncyclopediaManager() {
         objects = new ArrayList<>();
     }
