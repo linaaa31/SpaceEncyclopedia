@@ -23,7 +23,7 @@ public class StartPage extends BasePage {
 
         enterButton.addActionListener(e -> {
             System.out.println("Enter button clicked");
-            new MainMenuPage(manager).setVisible(true);
+            new MainMenuPage().setVisible(true);
             dispose();
         });
 

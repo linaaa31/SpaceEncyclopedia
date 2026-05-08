@@ -29,7 +29,7 @@ public class MainMenuPage extends BasePage {
     private JButton favoritesButton;
     private JButton searchButton;
 
-    public MainMenuPage(EncyclopediaManager manager) {
+    public MainMenuPage() {
         super("Milky Way Menu");
         this.manager = manager;
         BackgroundPanel panel = new BackgroundPanel();
