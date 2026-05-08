@@ -3,6 +3,8 @@ import spaceencyclopedia.core.Galaxy;
 import spaceencyclopedia.core.Planet;
 import spaceencyclopedia.core.SpaceObject;
 import spaceencyclopedia.core.Star;
+import spaceencyclopedia.core.Asteroid;
+import spaceencyclopedia.core.Comet;
 
 import java.util.ArrayList;
 
@@ -84,5 +86,31 @@ public class EncyclopediaManager {
             System.out.println(object);
             System.out.println("---------");
         }
+    }
+    public ArrayList<Asteroid> getAsteroids() {
+
+        ArrayList<Asteroid> asteroids = new ArrayList<>();
+
+        for (SpaceObject object : objects) {
+
+            if (object instanceof Asteroid) {
+                asteroids.add((Asteroid) object);
+            }
+        }
+
+        return asteroids;
+    }
+    public ArrayList<Comet> getComets() {
+
+        ArrayList<Comet> comets = new ArrayList<>();
+
+        for (SpaceObject object : objects) {
+
+            if (object instanceof Comet) {
+                comets.add((Comet) object);
+            }
+        }
+
+        return comets;
     }
 }
