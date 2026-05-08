@@ -26,4 +26,11 @@ public class FavoritesManager {
             System.out.println("-----------");
         }
     }
+    public boolean isFavorite(SpaceObject object) {
+        return favorites.contains(object);
+    }
+    public ArrayList<SpaceObject> getFavorites() {
+        return favorites;
+    }
+
 }
