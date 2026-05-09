@@ -32,7 +32,9 @@ public class AsteroidsPage extends BasePage {
         contentPanel.setBorder(new EmptyBorder(30, 50, 30, 50));
         contentPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         JScrollPane scrollPane = new JScrollPane(contentPanel);
-
+        scrollPane.setHorizontalScrollBarPolicy(
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
+        );
         scrollPane.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
         );
@@ -63,7 +65,12 @@ public class AsteroidsPage extends BasePage {
         descriptionArea.setEditable(false);
         descriptionArea.setFont(new Font("Serif", Font.PLAIN, 24));
         descriptionArea.setForeground(Color.WHITE);
+
         descriptionArea.setOpaque(false);
+
+        descriptionArea.setMaximumSize(
+                new Dimension(1200, Integer.MAX_VALUE)
+        );
         descriptionArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         JPanel asteroidPanel1 = createAsteroidPanel(
                 "Vesta",
@@ -94,6 +101,9 @@ public class AsteroidsPage extends BasePage {
         );
 
         backButton = createButton("Back");
+        backButton.setPreferredSize(new Dimension(200, 60));
+
+        backButton.setFont(new Font("Serif", Font.BOLD, 24));
         backButton.addActionListener(e -> {
             new MainMenuPage().setVisible(true);
             dispose();
@@ -130,8 +140,6 @@ public class AsteroidsPage extends BasePage {
 
         backgroundPanel.add(scrollPane, BorderLayout.CENTER);
         addComponentListener(new java.awt.event.ComponentAdapter() {
-
-            @Override
             public void componentResized(
                     java.awt.event.ComponentEvent e
             ) {
@@ -150,14 +158,10 @@ public class AsteroidsPage extends BasePage {
         add(backgroundPanel);
     }
 
-    private JPanel createAsteroidPanel(String name,
-                                       String imagePath,
-                                       String description) {
-
+    private JPanel createAsteroidPanel(String name, String imagePath, String description) {
         JPanel panel = new JPanel();
 
         panel.setOpaque(false);
-
         panel.setLayout(new BorderLayout(20, 20));
 
 
@@ -169,12 +173,7 @@ public class AsteroidsPage extends BasePage {
 
             ImageIcon icon = new ImageIcon(imageURL);
 
-            Image scaledImage = icon.getImage().getScaledInstance(
-                    250,
-                    180,
-                    Image.SCALE_SMOOTH
-            );
-
+            Image scaledImage = icon.getImage().getScaledInstance(250, 180, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(scaledImage));
 
         } else {
@@ -189,6 +188,7 @@ public class AsteroidsPage extends BasePage {
         textPanel.setOpaque(false);
 
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+        textPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
 
         JLabel asteroidName = createLabel(name, 28, Font.BOLD);
 
@@ -200,10 +200,13 @@ public class AsteroidsPage extends BasePage {
         asteroidDescription.setEditable(false);
 
         asteroidDescription.setFont(new Font("Serif", Font.PLAIN, 20));
-
         asteroidDescription.setForeground(Color.WHITE);
 
         asteroidDescription.setOpaque(false);
+
+        asteroidDescription.setMaximumSize(
+                new Dimension(850, Integer.MAX_VALUE)
+        );
 
         textPanel.add(asteroidName);
         textPanel.add(Box.createVerticalStrut(10));
