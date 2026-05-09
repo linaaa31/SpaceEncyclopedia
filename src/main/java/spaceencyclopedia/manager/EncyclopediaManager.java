@@ -165,6 +165,55 @@ try {
             "Neptune has the strongest winds of any planet in the Solar System. " + "A year on Neptune lasts about 165 Earth years.\n\n" +
                     "Triton is one of the coldest known objects in the Solar System and may contain underground oceans.",
             24622, 102, 4495, true, 14));
+    addObject(new Star("Sun", "Star",
+            "The star at the center of the Solar System.",
+
+            "The Sun is the star at the center of the Solar System. It provides the light and " +
+                    "heat that make life on Earth possible.\n\n" +
+                    "The Sun contains most of the mass of the Solar System and controls the motion " +
+                    "of planets, dwarf planets, asteroids, comets, and other objects through gravity.",
+
+            "The Sun is mainly made of hydrogen and helium. Hydrogen is used in nuclear fusion " +
+                    "inside the core, where it is changed into helium. This process releases a huge amount of energy.\n\n" +
+                    "Only a small part of the Sun is made of heavier elements such as oxygen, carbon, neon, and iron.",
+
+            "The average distance from Earth to the Sun is about 149.6 million kilometers. " +
+                    "This distance is also called one astronomical unit, or 1 AU.\n\n" +
+                    "Light from the Sun takes about 8 minutes to reach Earth.",
+
+            "The Sun is located in the Milky Way galaxy. It is not at the center of the galaxy, " +
+                    "but in one of its spiral arms. Compared with many stars, the Sun is an average-sized star, " +
+                    "but it is extremely important for our Solar System.",
+
+            "PHOTOSPHERE\n\n" +
+                    "The photosphere is a thin outermost layer of the Sun. " +
+                    "Below the photosphere, the Sun becomes opaque. However, " +
+                    "the photosphere itself is only slightly less opaque than the air on Earth.\n\n\n" +
+
+                    "CONVECTIVE ZONE\n\n" +
+                    "The convective zone carries hot material toward the surface of the Sun. " +
+                    "Once the material cools, it sinks back toward the hotter layers below. " +
+                    "This continuous movement transfers energy outward.\n\n\n" +
+
+                    "RADIATIVE ZONE\n\n" +
+                    "The radiative zone carries the intense heat of the core outward as thermal radiation. " +
+                    "Energy moves slowly through this region before reaching the outer layers of the Sun.\n\n\n" +
+
+                    "CORE\n\n" +
+                    "The core is the hottest and densest part of the Sun. " +
+                    "Nuclear fusion happens here, where hydrogen atoms combine to form helium. " +
+                    "This process releases enormous amounts of energy.\n\n\n" +
+
+                    "CORONA\n\n" +
+                    "The corona is the outer atmosphere of the Sun. " +
+                    "It extends millions of kilometers into space and becomes visible during a solar eclipse. " +
+                    "The corona is much hotter than the visible surface of the Sun.",
+
+            "The Sun contains more than 99% of the mass of the Solar System. " +
+                    "Light from the Sun takes about 8 minutes to reach Earth.",
+
+            696340, 1.989E30, 5778, 149.6
+    ));
     }  catch (InvalidSpaceObjectException e) {
         System.out.println("Error loading sample data: " + e.getMessage());
     }

@@ -50,6 +50,10 @@ public class MainMenuPage extends BasePage {
         this.dwarfPlanetsButton = this.createButton("Dwarf Planets");
         this.moonsButton = this.createButton("Moons");
         this.starsButton = this.createButton("Stars");
+        starsButton.addActionListener(e -> {
+            new StarsPage(manager).setVisible(true);
+            dispose();
+        });
         this.asteroidsButton = this.createButton("Asteroids");
         this.cometsButton = this.createButton("Comets");
         this.blackHolesButton = this.createButton("Black Holes");
