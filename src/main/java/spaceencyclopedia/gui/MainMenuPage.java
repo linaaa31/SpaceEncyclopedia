@@ -32,6 +32,7 @@ public class MainMenuPage extends BasePage {
     public MainMenuPage() {
         super("Milky Way Menu");
         this.manager = new EncyclopediaManager();
+        manager.loadSampleData();
         BackgroundPanel panel =
                 new BackgroundPanel("/spaceencyclopedia/images/img.png");
         panel.setLayout(new GridBagLayout());
@@ -41,7 +42,7 @@ public class MainMenuPage extends BasePage {
         this.title = this.createLabel("MILKY WAY MENU", 40, 1);
         this.planetsButton = this.createButton("Planets");
         this.planetsButton.addActionListener(e -> {
-            new PlanetsPage().setVisible(true);
+            new PlanetsPage(manager).setVisible(true);
             dispose();
         });
 

@@ -1,18 +1,26 @@
 package spaceencyclopedia.gui;
 
+import spaceencyclopedia.core.Planet;
+import spaceencyclopedia.manager.EncyclopediaManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class PlanetsPage extends BasePage {
+private EncyclopediaManager manager;
 
-    public PlanetsPage() {
+    public PlanetsPage(EncyclopediaManager manager) {
         super("Planets");
+
+        this.manager = manager;
+
         BackgroundPanel backgroundPanel =
                 new BackgroundPanel("/spaceencyclopedia/images/img_1.png");
+
         backgroundPanel.setLayout(new BorderLayout());
-        backgroundPanel.add(new SolarSystemPanel(),
-                BorderLayout.CENTER);
+        backgroundPanel.add(new SolarSystemPanel(), BorderLayout.CENTER);
+
         setContentPane(backgroundPanel);
     }
 
@@ -35,15 +43,18 @@ public class PlanetsPage extends BasePage {
 
             for (String planet : planets) {
                 JButton button = createPlanetButton(planet, 80);
-
                 button.addActionListener(e -> {
-                    System.out.println(planet + " clicked");
+                    Planet selectedPlanet =
+                            (Planet) manager.searchByName(planet);
+
+                    new PlanetDetailsPage(selectedPlanet, manager).setVisible(true);
+
+                    dispose();
                 });
 
                 planetButtons.add(button);
                 add(button);
             }
-
             backButton = createButton("Back");
             backButton.setFont(new Font("Arial", Font.BOLD, 16));
 
@@ -60,15 +71,7 @@ public class PlanetsPage extends BasePage {
                     loadImage("/spaceencyclopedia/images/sun.png");
 
             if (sunIcon != null){
-
-                g2.drawImage(
-                        sunIcon.getImage(),
-                        -350,
-                        h / 2 - 250,
-                        500,
-                        500,
-                        this
-                );
+                g2.drawImage(sunIcon.getImage(), -350, h / 2 - 250, 500, 500, this);
             }
         }
         public void doLayout() {
@@ -102,22 +105,13 @@ public class PlanetsPage extends BasePage {
 
                 int x = w * positions[i][0] / 100;
                 int y = h * positions[i][1] / 100;
-
-                planetButtons.get(i).setBounds(
-                        x - icon.getIconWidth() / 2,
-                        y - icon.getIconHeight() / 2,
-                        icon.getIconWidth(),
-                        icon.getIconHeight()
-                );
+                planetButtons.get(i).setBounds(x - icon.getIconWidth() / 2, y - icon.getIconHeight() / 2, icon.getIconWidth(), icon.getIconHeight());
             }
         }
 
         protected void paintComponent(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
-            g2.setRenderingHint(
-                    RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON
-            );
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             int w = getWidth();
             int h = getHeight();
@@ -125,37 +119,17 @@ public class PlanetsPage extends BasePage {
             drawOrbits(g2, w, h);
         }
 
-
-
-
-
         private void drawOrbits(Graphics2D g2, int w, int h) {
             g2.setColor(new Color(230, 230, 230));
 
             int centerX = 0;
             int centerY = h / 2;
 
-            int[] orbitWidths = {
-                    w / 3,
-                    w / 2,
-                    w * 2 / 3,
-                    w * 5 / 6,
-                    w,
-                    (int) (w * 6.4 / 5),
-                    (int) (w * 7.5 / 5),
-                    w * 9 / 5,
-
-            };
+            int[] orbitWidths = {w / 3, w / 2, w * 2 / 3, w * 5 / 6, w, (int) (w * 6.4 / 5), (int) (w * 7.5 / 5), w * 9 / 5,};
 
             for (int orbitWidth : orbitWidths) {
                 int orbitHeight = h / 2 + orbitWidth / 8;
-
-                g2.drawOval(
-                        centerX - orbitWidth / 2,
-                        centerY - orbitHeight / 2,
-                        orbitWidth,
-                        orbitHeight
-                );
+                g2.drawOval(centerX - orbitWidth / 2, centerY - orbitHeight / 2, orbitWidth, orbitHeight);
             }
         }
     }
@@ -196,11 +170,7 @@ public class PlanetsPage extends BasePage {
             height = size;
         }
 
-        Image scaledImage = originalIcon.getImage().getScaledInstance(
-                width,
-                height,
-                Image.SCALE_SMOOTH
-        );
+        Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImage);
     }
 
