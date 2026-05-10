@@ -57,17 +57,12 @@ public class NebulaePage extends BasePage {
             }
             nebulaPanel.add(button, gbc);
         }
-        JButton backButton = new JButton("Back");
-        backButton.setFont(new Font("Arial", Font.BOLD, 28));
-        backButton.setForeground(Color.BLACK);
-        backButton.setBackground(Color.WHITE);
-        backButton.setFocusPainted(false);
-        backButton.setBorderPainted(false);
-        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        backButton.setPreferredSize(new Dimension(140, 55));
+        JButton backButton = createButton("Back");
+        backButton.setPreferredSize(new Dimension(200, 60));
 
+        backButton.setFont(new Font("Serif", Font.BOLD, 24));
         backButton.addActionListener(e -> {
-            new MainMenuPage().setVisible(true);
+            new MainMenuPage(manager).setVisible(true);
             dispose();
         });
         JPanel bottomPanel = new JPanel();
@@ -82,6 +77,7 @@ public class NebulaePage extends BasePage {
     }
     private JButton createNebulaButton(Nebula nebula) {
         JButton button = new JButton(nebula.getName());
+        button.setPreferredSize(new Dimension(300, 210));
         String imagePath = "/spaceencyclopedia/images/" +
                 nebula.getName().toLowerCase().replace(" ", "") + ".png";
         java.net.URL imageURL = getClass().getResource(imagePath);
@@ -89,7 +85,7 @@ public class NebulaePage extends BasePage {
             ImageIcon icon =new ImageIcon(imageURL);
 
             Image scaledImage = icon.getImage().getScaledInstance(
-                    360, 210, Image.SCALE_SMOOTH
+                    260, 150, Image.SCALE_SMOOTH
             );
             button.setIcon(new ImageIcon(scaledImage));
         }

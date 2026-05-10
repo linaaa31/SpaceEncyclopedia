@@ -59,7 +59,7 @@ private EncyclopediaManager manager;
 
             backButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
-                    new MainMenuPage().setVisible(true);
+                    new MainMenuPage(manager).setVisible(true);
                     dispose();
                 }
             });

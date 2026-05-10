@@ -18,8 +18,7 @@ public class NebulaDetailsPage extends BasePage {
         this.nebula = nebula;
         this.manager = manager;
 
-        BackgroundPanel backgroundPanel =
-                new BackgroundPanel("/spaceencyclopedia/images/img_1.png");
+        BackgroundPanel backgroundPanel = new BackgroundPanel("/spaceencyclopedia/images/img_1.png");
         backgroundPanel.setLayout(new BorderLayout());
 
         JPanel contentPanel = new JPanel();
@@ -92,6 +91,13 @@ public class NebulaDetailsPage extends BasePage {
         infoArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton favoriteButton = createButton("Add to Favorites");
+
+        favoriteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                manager.getFavoritesManager().addFavorite(nebula);
+                favoriteButton.setText("Added to Favorites");
+            }
+        });
 
         JButton backButton = createButton("Back");
         backButton.addActionListener(e -> {

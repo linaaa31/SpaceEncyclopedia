@@ -12,6 +12,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import spaceencyclopedia.core.Star;
 import spaceencyclopedia.manager.EncyclopediaManager;
 
 public class MainMenuPage extends BasePage {
@@ -29,17 +31,15 @@ public class MainMenuPage extends BasePage {
     private JButton favoritesButton;
     private JButton searchButton;
 
-    public MainMenuPage() {
-        super("Milky Way Menu");
-        this.manager = new EncyclopediaManager();
-        manager.loadSampleData();
-        BackgroundPanel panel =
-                new BackgroundPanel("/spaceencyclopedia/images/img.png");
+    public MainMenuPage(EncyclopediaManager manager) {
+        super("Solar System Menu");
+        this.manager= manager;
+        BackgroundPanel panel = new BackgroundPanel("/spaceencyclopedia/images/img.png");
         panel.setLayout(new GridBagLayout());
         JPanel menuPanel = new JPanel();
         menuPanel.setOpaque(false);
         menuPanel.setLayout(new BoxLayout(menuPanel, 1));
-        this.title = this.createLabel("MILKY WAY MENU", 40, 1);
+        this.title = this.createLabel("SOLAR SYSTEM MENU", 40, 1);
         this.planetsButton = this.createButton("Planets");
         this.planetsButton.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -48,7 +48,6 @@ public class MainMenuPage extends BasePage {
                     }
                 });
 
-        this.dwarfPlanetsButton = this.createButton("Dwarf Planets");
         this.moonsButton = this.createButton("Satellites");
         this.moonsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -56,10 +55,11 @@ public class MainMenuPage extends BasePage {
                 dispose();
             }
         });
-        this.starsButton = this.createButton("Stars");
+        this.starsButton = this.createButton("Star");
+        Star star = (Star) manager.searchByName("Sun");
         this.starsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                new StarsPage(manager).setVisible(true);
+                new StarDetailsPage(star,manager).setVisible(true);
                 dispose();
             }
         });
@@ -69,14 +69,18 @@ public class MainMenuPage extends BasePage {
             dispose();
         });
 
-        this.blackHolesButton = this.createButton("Black Holes");
         this.nebulaeButton = this.createButton("Nebulae");
         nebulaeButton.addActionListener(e -> {
             new NebulaePage(manager).setVisible(true);
             dispose();
         });
-        this.funFactsButton = this.createButton("Fun Facts");
         this.favoritesButton = this.createButton("Favorites");
+        this.favoritesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new FavoritesPage(manager).setVisible(true);
+                dispose();
+            }
+        });
         this.searchButton = this.createButton("Search");
         this.asteroidsButton = this.createButton("Asteroids");
         this.asteroidsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -88,14 +92,12 @@ public class MainMenuPage extends BasePage {
         JPanel gridPanel = new JPanel();
         gridPanel.setOpaque(false);
         gridPanel.setLayout(new GridLayout(5, 2, 20, 15));
-        gridPanel.add(this.dwarfPlanetsButton);
+
         gridPanel.add(this.moonsButton);
         gridPanel.add(this.starsButton);
         gridPanel.add(this.asteroidsButton);
         gridPanel.add(this.cometsButton);
-        gridPanel.add(this.blackHolesButton);
         gridPanel.add(this.nebulaeButton);
-        gridPanel.add(this.funFactsButton);
         gridPanel.add(this.favoritesButton);
         gridPanel.add(this.searchButton);
         this.planetsButton.setAlignmentX(0.5F);
@@ -129,9 +131,9 @@ public class MainMenuPage extends BasePage {
         this.planetsButton.setMaximumSize(new Dimension(this.getWidth() - 350,
                 this.getHeight() / 10));
         this.planetsButton.setMinimumSize(new Dimension(300, 60));
-        JButton[] buttons = new JButton[]{this.dwarfPlanetsButton, this.moonsButton,
-                this.starsButton, this.asteroidsButton, this.cometsButton, this.blackHolesButton,
-                this.nebulaeButton, this.funFactsButton, this.favoritesButton, this.searchButton};
+        JButton[] buttons = new JButton[]{this.moonsButton,
+                this.starsButton, this.asteroidsButton, this.cometsButton,
+                this.nebulaeButton, this.searchButton, this.favoritesButton};
 
         for(JButton button : buttons) {
             button.setFont(normalButtonFont);

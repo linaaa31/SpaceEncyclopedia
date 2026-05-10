@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 public class EncyclopediaManager {
     private ArrayList<SpaceObject> objects;
+    private FavoritesManager favoritesManager;
     public void loadSampleData() {
+        objects.clear();
 try {
     Planet earth = new Planet("Earth", "Planet",
             "The third planet from the Sun and the only known planet that supports life.",
@@ -669,226 +671,103 @@ try {
             "The Horsehead Nebula is important because it shows how dark nebulae can hide star-forming material.",
             "Its famous shape makes it one of the most recognizable nebulae in astronomy.",
             1375, "Dark Nebula", true));
-    addObject(new Comet(
-            "Comets",
-            "Comet",
-
-
+    addObject(new Comet("Comets", "Comet",
             "Small icy objects that travel through the Solar System.",
-
-
             "Comets are small icy objects that travel through our Solar System. " +
                     "They are often called dirty snowballs because they are made of ice, dust, rock, and frozen gases.",
-
-
             "Most comets originate from distant regions such as the Kuiper Belt and the Oort Cloud far beyond the planets.",
-
-
             "When a comet moves closer to the Sun, the heat causes its ice to evaporate and release gas and dust. " +
                     "This creates a glowing atmosphere around the comet called a coma and often forms a long bright tail. " +
                     "The tail always points away from the Sun because of solar wind and radiation.",
-
-
             "Comets are important to scientists because they contain very old material left over from the formation " +
                     "of the Solar System about 4.6 billion years ago. By studying them astronomers can learn more " +
                     "about the origins of planets water and organic molecules in space.",
-
-
             "Comets are among the most fascinating objects in the Solar System. " +
                     "Their bright tails and rare appearances have inspired humans for centuries.",
-
-
-            100,
-
-
-            true,
-            "default"
-    ));
-    addObject(new Comet(
-            "Halley's Comet",
-            "Comet",
-
-
+            100, true, "default"));
+    addObject(new Comet("Halley's Comet", "Comet",
             "The most famous comet in history.",
-
-
             "The most famous comet in history." + "Halley’s Comet is the most famous comet in history. " +
                     "It becomes visible from Earth approximately every 76 years." +
                     "The comet is believed to originate from the Kuiper Belt."+
                     "As it approaches the Sun, Halley’s Comet develops a bright tail visible from Earth."+
                     "Scientists study Halley’s Comet to better understand the early Solar System.",
-
-
             "The comet is believed to originate from the Kuiper Belt.",
-
-
             "As it approaches the Sun, Halley’s Comet develops a bright tail visible from Earth.",
-
-
             "Scientists study Halley’s Comet to better understand the early Solar System.",
-
-
             "The comet is named after astronomer Edmond Halley who correctly predicted its return. " +
                     "Its next appearance near Earth is expected in 2061.",
-
-
-            76,
-
-
-            true,
-            "/spaceencyclopedia/images/halley.jpg"
-    ));
-    addObject(new Comet(
-            "Comet Hale-Bopp",
-            "Comet",
-
-
+            76, true,
+            "/spaceencyclopedia/images/halley.jpg"));
+    addObject(new Comet("Comet Hale-Bopp", "Comet",
             "One of the brightest comets of the 20th century.",
-
-
             "One of the brightest comets of the 20th century." +
                     "Hale–Bopp was one of the brightest comets ever observed."+
                     "It traveled into the inner Solar System from distant outer regions." +
                     "The comet displayed an enormous bright tail visible for months." +
                     "Its long visibility allowed scientists to perform extensive observations.",
-
-
             "It traveled into the inner Solar System from distant outer regions.",
-
-
             "The comet displayed an enormous bright tail visible for months.",
-
-
             "Its long visibility allowed scientists to perform extensive observations.",
-
-
             "Millions of people observed Hale–Bopp during 1996 and 1997 without telescopes.",
-
-
             2533,
-
-
             true,
-            "/spaceencyclopedia/images/Comet_Hale-Bopp.jpg"
-
-
-    ));
-    addObject(new Comet(
-            "Comet NEOWISE",
-            "Comet",
-
-
+            "/spaceencyclopedia/images/Comet_Hale-Bopp.jpg"));
+    addObject(new Comet("Comet NEOWISE", "Comet",
             "A bright comet visible in 2020.",
-
-
             "A bright comet visible in 2020." +
                     "Comet NEOWISE became very popular in 2020 because it was visible to the naked eye."+
                     "It was discovered by NASA's NEOWISE space telescope."+
                     "The comet developed a long golden tail while approaching the Sun." +
                     "Scientists used the comet to study comet composition and dust behavior.",
-
-
             "It was discovered by NASA's NEOWISE space telescope.",
-
-
             "The comet developed a long golden tail while approaching the Sun.",
-
-
             "Scientists used the comet to study comet composition and dust behavior.",
-
-
             "Photographers around the world captured impressive images of NEOWISE.",
-
-
-            6800,
-
-
-            true,
-            "/spaceencyclopedia/images/Comet-NEOWISE.jpg"
-
-
-    ));
-    addObject(new Comet(
-            "Comet Shoemaker-Levy 9",
-            "Comet",
-
-
+            6800, true,
+            "/spaceencyclopedia/images/Comet-NEOWISE.jpg"));
+    addObject(new Comet("Comet Shoemaker-Levy 9", "Comet",
             "A comet famous for colliding with Jupiter.",
-
-
             "A comet famous for colliding with Jupiter."+
                     "Shoemaker–Levy 9 became famous after colliding with Jupiter in 1994." +
                     "Fragments of the comet crashed into Jupiter’s atmosphere causing enormous explosions."+
                     "The collision helped scientists better understand impacts in the Solar System.",
-
-
             "The comet was captured by Jupiter’s gravity before impact.",
-
-
             "Fragments of the comet crashed into Jupiter’s atmosphere causing enormous explosions.",
-
-
             "The collision helped scientists better understand impacts in the Solar System.",
-
-
             "This was the first direct observation of two Solar System bodies colliding.",
-
-
             2,
-
-
             false,
-            "/spaceencyclopedia/images/Comet Shoemaker–Levy 9.jpg"
-
-
-    ));
-    addObject(new Comet(
-            "Comet 67P",
-            "Comet",
-
-
-            "The comet visited by the Rosetta spacecraft.",
-
-
+            "/spaceencyclopedia/images/Comet Shoemaker–Levy 9.jpg"));
+    addObject(new Comet("Comet 67P", "Comet", "The comet visited by the Rosetta spacecraft.",
             "The comet visited by the Rosetta spacecraft."+
                     "Comet 67P became famous because of the European Space Agency Rosetta mission."+
                     "It is a periodic comet orbiting the Sun every few years."+
                     "The comet releases gas and dust when heated by the Sun."+
                     "The Rosetta mission provided valuable information about comet composition and structure.",
-
-
             "It is a periodic comet orbiting the Sun every few years.",
-
-
             "The comet releases gas and dust when heated by the Sun.",
-
-
             "The Rosetta mission provided valuable information about comet composition and structure.",
-
-
             "In 2014 the Philae probe successfully landed on the comet’s surface.",
-
-
             6.45,
-
-
             false,
-            "/spaceencyclopedia/images/Comet 67P Churyumov–Gerasimenko.jpg"
-
-
-    ));
+            "/spaceencyclopedia/images/Comet 67P Churyumov–Gerasimenko.jpg"));
 }  catch (InvalidSpaceObjectException e) {
         System.out.println("Error loading sample data: " + e.getMessage());
     }
     }
     public EncyclopediaManager() {
         objects = new ArrayList<>();
+        favoritesManager = new FavoritesManager();
     }
 
     public void addObject(SpaceObject object) {
         objects.add(object);
     }
 
+    public FavoritesManager getFavoritesManager() {
+        return favoritesManager;
+    }
     public SpaceObject searchByName(String name) {
         for (SpaceObject object : objects) {
             if (object.getName().equalsIgnoreCase(name)) {

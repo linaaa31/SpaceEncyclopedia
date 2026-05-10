@@ -117,7 +117,7 @@ public class CometsPage extends BasePage {
 
         backButton.addActionListener(e -> {
 
-            new MainMenuPage().setVisible(true);
+            new MainMenuPage(manager).setVisible(true);
 
             dispose();
         });

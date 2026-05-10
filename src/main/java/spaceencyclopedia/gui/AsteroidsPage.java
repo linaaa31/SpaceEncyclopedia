@@ -105,7 +105,7 @@ public class AsteroidsPage extends BasePage {
         backButton.setFont(new Font("Serif", Font.BOLD, 24));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                new MainMenuPage().setVisible(true);
+                new MainMenuPage(manager).setVisible(true);
                 dispose();
             }
         });

@@ -93,6 +93,14 @@ public class PlanetDetailsPage extends BasePage {
         infoArea.setMaximumSize(new Dimension(1200, Integer.MAX_VALUE));
         infoArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         JButton favoriteButton = createButton("Add to Favorites");
+
+        favoriteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                manager.getFavoritesManager().addFavorite(planet);
+                favoriteButton.setText("Added to Favorites");
+            }
+        });
+
         JButton backButton = createButton("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {

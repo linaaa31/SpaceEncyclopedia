@@ -84,16 +84,23 @@ public class StarDetailsPage extends BasePage {
         JTextArea factsText = createTextArea(
                 "INTERESTING FACTS\n\n" + star.getInterestingFacts()
         );
+        JButton favoriteButton = createButton("Add to Favorites");
 
+        favoriteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                manager.getFavoritesManager().addFavorite(star);
+                favoriteButton.setText("Added to Favorites");
+            }
+        });
         JButton backButton = createButton("Back");
-        backButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                new StarsPage(manager).setVisible(true);
+                new MainMenuPage(manager).setVisible(true);
                 dispose();
             }
         });
-
+        favoriteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         contentPanel.add(title);
         contentPanel.add(Box.createVerticalStrut(30));
         contentPanel.add(introPanel);
@@ -111,8 +118,24 @@ public class StarDetailsPage extends BasePage {
         contentPanel.add(structureExplanation);
         contentPanel.add(Box.createVerticalStrut(30));
         contentPanel.add(factsText);
+
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setOpaque(false);
+        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
+        buttonsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        favoriteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        favoriteButton.setMaximumSize(favoriteButton.getPreferredSize());
+        backButton.setMaximumSize(backButton.getPreferredSize());
+
+        buttonsPanel.add(favoriteButton);
+        buttonsPanel.add(Box.createVerticalStrut(15));
+        buttonsPanel.add(backButton);
+
         contentPanel.add(Box.createVerticalStrut(40));
-        contentPanel.add(backButton);
+        contentPanel.add(buttonsPanel);
 
         backgroundPanel.add(scrollPane, BorderLayout.CENTER);
         setContentPane(backgroundPanel);

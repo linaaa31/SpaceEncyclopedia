@@ -11,11 +11,10 @@ public class StartPage extends BasePage {
 
     public StartPage(EncyclopediaManager manager) {
         super("Space Encyclopedia");
-
         this.manager = manager;
-
-        BackgroundPanel panel =
-                new BackgroundPanel("/spaceencyclopedia/images/img.png");
+        manager.loadSampleData();
+        manager.getFavoritesManager().loadFavoritesFromFile(manager);
+        BackgroundPanel panel = new BackgroundPanel("/spaceencyclopedia/images/img.png");
         panel.setLayout(new GridBagLayout());
 
         JLabel title = createLabel("SPACE ENCYCLOPEDIA", 50, Font.BOLD);
@@ -25,7 +24,7 @@ public class StartPage extends BasePage {
         enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 System.out.println("Enter button clicked");
-                new MainMenuPage().setVisible(true);
+                new MainMenuPage(manager).setVisible(true);
                 dispose();
             }
         });
