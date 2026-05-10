@@ -194,7 +194,7 @@ try {
                     "This distance is also called one astronomical unit, or 1 AU.\n\n" +
                     "Light from the Sun takes about 8 minutes to reach Earth.",
             "The Sun is located in the Milky Way galaxy. It is not at the center of the galaxy, " +
-                    "but in one of its spiral arms. Compared with many stars, the Sun is an average-sized star, " +
+                    "but in one of its spiral arms. Compared \n with many stars, the Sun is an average-sized star, " +
                     "but it is extremely important for our Solar System.",
             "PHOTOSPHERE\n\n" +
                     "The photosphere is a thin outermost layer of the Sun. " +
