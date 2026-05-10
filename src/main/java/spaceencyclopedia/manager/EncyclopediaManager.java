@@ -1,7 +1,7 @@
 package spaceencyclopedia.manager;
 import spaceencyclopedia.core.*;
 import spaceencyclopedia.exception.InvalidSpaceObjectException;
-
+import spaceencyclopedia.core.Nebula;
 import java.util.ArrayList;
 
 public class EncyclopediaManager {
@@ -625,6 +625,50 @@ try {
             "The Sun contains more than 99% of the mass of the Solar System. " +
                     "Light from the Sun takes about 8 minutes to reach Earth.",
             696340, 1.989E30, 5778, 149.6));
+    addObject(new Nebula("Orion", "Nebula",
+            "A bright star-forming nebula in the constellation Orion.",
+            "The Orion Nebula is one of the brightest and most famous nebulae visible from Earth. " +
+                    "It is a huge cloud of gas and dust where new stars are forming.",
+            "The Orion Nebula formed from a large cloud of interstellar gas and dust. " +
+                    "Gravity pulled parts of the cloud together, creating dense regions where stars began to form.",
+            "This nebula is important because it helps scientists understand how stars and planetary systems are born.",
+            "The Orion Nebula can be faintly seen with the naked eye under very dark skies, but it is much clearer through binoculars or telescopes. \nIt is located in Orion’s sword.",
+            1500, "Emission Nebula", true));
+
+    addObject(new Nebula("Eagle", "Nebula",
+            "A star-forming nebula famous for the Pillars of Creation.",
+            "The Eagle Nebula is a large cloud of gas and dust. It is famous for a region called the Pillars of Creation.",
+            "The nebula contains cold gas and dust that can collapse under gravity and form new stars.",
+            "The Eagle Nebula is important because it shows active star formation and beautiful structures shaped by radiation.",
+            "The Pillars of Creation are one of the most famous space images ever taken.",
+            7000, "Emission Nebula", true));
+
+    addObject(new Nebula("Crab", "Nebula",
+            "A supernova remnant created after a massive star exploded.",
+            "The Crab Nebula is the remains of a star that exploded in a supernova. " +
+                    "It contains gas moving outward from the explosion.",
+            "It formed when a massive star reached the end of its life and exploded. " +
+                    "The explosion was observed from Earth in the year 1054.",
+            "The Crab Nebula helps scientists study supernova explosions and neutron stars.",
+            "At the center of the Crab Nebula is a rapidly spinning neutron star called a pulsar.",
+            6500, "Supernova Remnant", false));
+
+    addObject(new Nebula("Ring", "Nebula",
+            "A planetary nebula formed from a dying star.",
+            "The Ring Nebula is a colorful shell of gas released by a dying star. " +
+                    "Despite its name, it has nothing to do with planets.",
+            "It formed when a Sun-like star pushed its outer layers into space near the end of its life.",
+            "The Ring Nebula helps scientists understand what may happen to stars like the Sun in the far future.",
+            "It looks like a glowing ring when viewed through telescopes.",
+            2000, "Planetary Nebula", false));
+
+    addObject(new Nebula("Horsehead", "Nebula",
+            "A dark nebula shaped like a horse's head.",
+            "The Horsehead Nebula is a dark cloud of dust and gas. It blocks light from the bright background behind it.",
+            "It formed from dense interstellar dust and gas. Its shape is carved by radiation from nearby stars.",
+            "The Horsehead Nebula is important because it shows how dark nebulae can hide star-forming material.",
+            "Its famous shape makes it one of the most recognizable nebulae in astronomy.",
+            1375, "Dark Nebula", true));
     }  catch (InvalidSpaceObjectException e) {
         System.out.println("Error loading sample data: " + e.getMessage());
     }
@@ -731,5 +775,15 @@ try {
             }
         }
         return comets;
+    }
+    public ArrayList<Nebula> getNebulae() {
+
+        ArrayList<Nebula> nebulae =new ArrayList<>();
+        for (SpaceObject object : objects) {
+            if (object instanceof Nebula) {
+                nebulae.add((Nebula) object);
+            }
+        }
+        return nebulae;
     }
 }

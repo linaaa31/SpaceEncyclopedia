@@ -7,9 +7,16 @@ public class Nebula extends SpaceObject {
     private double distanceFromEarth;
     private String nebulaType;
     private boolean starFormingRegion;
+    private String overview;
+    private String formation;
+    private String importance;
+    private String interestingFacts;
 
-    public Nebula(String name, String type, String description, double distanceFromEarth, String nebulaType, boolean starFormingRegion)
-            throws InvalidSpaceObjectException {
+    public Nebula(String name, String type, String description,
+                  String overview, String formation, String importance,
+                  String interestingFacts,
+                  double distanceFromEarth, String nebulaType,
+                  boolean starFormingRegion)  throws InvalidSpaceObjectException {
         super(name, type, description);
         if (distanceFromEarth < 0) {
             throw new InvalidSpaceObjectException(
@@ -21,6 +28,10 @@ public class Nebula extends SpaceObject {
                     "Nebula type cannot be empty."
             );
         }
+        this.overview = overview;
+        this.formation = formation;
+        this.importance = importance;
+        this.interestingFacts = interestingFacts;
         this.distanceFromEarth = distanceFromEarth;
         this.nebulaType = nebulaType;
         this.starFormingRegion = starFormingRegion;
@@ -45,6 +56,22 @@ public class Nebula extends SpaceObject {
 
     public boolean isStarFormingRegion() {
         return starFormingRegion;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public String getFormation() {
+        return formation;
+    }
+
+    public String getImportance() {
+        return importance;
+    }
+
+    public String getInterestingFacts() {
+        return interestingFacts;
     }
 
     public String toString() {
