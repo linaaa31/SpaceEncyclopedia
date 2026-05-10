@@ -64,6 +64,11 @@ public class MainMenuPage extends BasePage {
             }
         });
         this.cometsButton = this.createButton("Comets");
+        this.cometsButton.addActionListener(e -> {
+            new CometsPage(manager).setVisible(true);
+            dispose();
+        });
+
         this.blackHolesButton = this.createButton("Black Holes");
         this.nebulaeButton = this.createButton("Nebulae");
         nebulaeButton.addActionListener(e -> {
