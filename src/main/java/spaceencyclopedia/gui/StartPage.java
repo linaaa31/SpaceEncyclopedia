@@ -18,8 +18,8 @@ public class StartPage extends BasePage {
         panel.setLayout(new GridBagLayout());
 
         JLabel title = createLabel("SPACE ENCYCLOPEDIA", 50, Font.BOLD);
-        JLabel subtitle = createLabel("Explore the Milky Way Galaxy", 26, Font.PLAIN);
-        JButton enterButton = createButton("Enter Spacepedia");
+        JLabel subtitle = createLabel("Explore the Solar System", 26, Font.PLAIN);
+        JButton enterButton = createButton("Enter encyclopedia");
 
         enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {

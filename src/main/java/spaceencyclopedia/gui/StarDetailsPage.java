@@ -170,32 +170,24 @@ public class StarDetailsPage extends BasePage {
 
             int height = originalHeight * width / originalWidth;
 
-            Image scaledImage = icon.getImage().getScaledInstance(
-                    width,
-                    height,
-                    Image.SCALE_SMOOTH
-            );
-
+            Image scaledImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
             label.setIcon(new ImageIcon(scaledImage));
         } else {
             label.setText("Image not found");
             label.setForeground(Color.WHITE);
         }
-
         return label;
     }
 
     private class StructureSunPanel extends JPanel {
 
             private Image image;
-
             public StructureSunPanel() {
                 setPreferredSize(new Dimension(1200, 650));
                 setMaximumSize(new Dimension(1200, 650));
                 setOpaque(false);
 
-                java.net.URL imageURL =
-                        getClass().getResource("/spaceencyclopedia/images/StructureOfSun.png");
+                java.net.URL imageURL = getClass().getResource("/spaceencyclopedia/images/StructureOfSun.png");
 
                 if (imageURL != null) {
                     image = new ImageIcon(imageURL).getImage();
@@ -204,11 +196,8 @@ public class StarDetailsPage extends BasePage {
 
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
                 Graphics2D g2 = (Graphics2D) g;
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                        RenderingHints.VALUE_ANTIALIAS_ON);
-
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 if (image != null) {
                     g2.drawImage(image, 60, 40, 580, 580, this);
                 }
@@ -224,12 +213,9 @@ public class StarDetailsPage extends BasePage {
                 drawLabelLine(g2, "Core", 760, 530, 380, 350);
             }
 
-            private void drawLabelLine(Graphics2D g2, String text,
-                                       int textX, int textY,
-                                       int lineEndX, int lineEndY) {
+            private void drawLabelLine(Graphics2D g2, String text, int textX, int textY, int lineEndX, int lineEndY) {
 
                 g2.drawString(text, textX, textY);
-
                 FontMetrics fm = g2.getFontMetrics();
                 int startX = textX - 25;
                 int startY = textY - fm.getHeight() / 3;

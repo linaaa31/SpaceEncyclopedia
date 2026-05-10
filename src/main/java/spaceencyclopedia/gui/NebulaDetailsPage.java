@@ -40,9 +40,7 @@ public class NebulaDetailsPage extends BasePage {
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        String imagePath = "/spaceencyclopedia/images/" +
-                nebula.getName().toLowerCase().replace(" ", "") + ".png";
-
+        String imagePath = "/spaceencyclopedia/images/" + nebula.getName().toLowerCase().replace(" ", "") + ".png";
         java.net.URL imageURL = getClass().getResource(imagePath);
 
         if (imageURL != null) {
@@ -51,14 +49,10 @@ public class NebulaDetailsPage extends BasePage {
             Image originalImage = icon.getImage();
             int originalWidth = icon.getIconWidth();
             int originalHeight = icon.getIconHeight();
-
             int newWidth = 420;
             int newHeight = (originalHeight * newWidth) / originalWidth;
 
-            Image scaledImage = originalImage.getScaledInstance(
-                    newWidth, newHeight, Image.SCALE_SMOOTH
-            );
-
+            Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(scaledImage));
         } else {
             imageLabel.setText("Nebula image not found");
@@ -66,8 +60,7 @@ public class NebulaDetailsPage extends BasePage {
         }
 
         JTextArea factsArea = createTextArea(
-                "Distance from Earth: " + nebula.getDistanceFromEarth() + " light-years" +
-                        "\n\nNebula Type: " + nebula.getNebulaType() +
+                "Distance from Earth: " + nebula.getDistanceFromEarth() + " light-years" + "\n\nNebula Type: " + nebula.getNebulaType() +
                         "\n\nStar Forming Region: " + nebula.isStarFormingRegion()
         );
 
@@ -80,8 +73,7 @@ public class NebulaDetailsPage extends BasePage {
         topPanel.add(imageLabel, BorderLayout.WEST);
         topPanel.add(factsArea, BorderLayout.CENTER);
 
-        JTextArea infoArea = createTextArea(
-                "ABOUT THE NEBULA\n\n" + nebula.getOverview() +
+        JTextArea infoArea = createTextArea("ABOUT THE NEBULA\n\n" + nebula.getOverview() +
                         "\n\nFORMATION\n\n" + nebula.getFormation() +
                         "\n\nIMPORTANCE\n\n" + nebula.getImportance() +
                         "\n\nINTERESTING FACTS\n\n" + nebula.getInterestingFacts()
@@ -131,7 +123,6 @@ public class NebulaDetailsPage extends BasePage {
         textArea.setFont(new Font("Serif", Font.PLAIN, 24));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-
         return textArea;
     }
 }

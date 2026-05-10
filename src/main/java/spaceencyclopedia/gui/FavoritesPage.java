@@ -157,42 +157,23 @@ public class FavoritesPage extends BasePage {
         JButton button = new JButton();
 
         if (imageURL != null) {
-
             ImageIcon icon = new ImageIcon(imageURL);
-
             int originalWidth = icon.getIconWidth();
             int originalHeight = icon.getIconHeight();
-
             int maxSize = 120;
-
             if (object instanceof Star) {
                 maxSize = 150;
             }
-
             int newWidth;
             int newHeight;
-
             if (originalWidth > originalHeight) {
-
                 newWidth = maxSize;
-
-                newHeight =
-                        (originalHeight * maxSize) / originalWidth;
-
+                newHeight = (originalHeight * maxSize) / originalWidth;
             } else {
-
                 newHeight = maxSize;
-
-                newWidth =
-                        (originalWidth * maxSize) / originalHeight;
+                newWidth = (originalWidth * maxSize) / originalHeight;
             }
-            Image scaledImage =
-                    icon.getImage().getScaledInstance(
-                            newWidth,
-                            newHeight,
-                            Image.SCALE_SMOOTH
-                    );
-
+            Image scaledImage = icon.getImage().getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
             button.setIcon(new ImageIcon(scaledImage));
         }
 
@@ -200,7 +181,6 @@ public class FavoritesPage extends BasePage {
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.setOpaque(false);
-
         return button;
     }
 
@@ -212,7 +192,6 @@ public class FavoritesPage extends BasePage {
         } else if (object instanceof Star) {
             new StarDetailsPage((Star) object, manager).setVisible(true);
         }
-
         dispose();
     }
 }

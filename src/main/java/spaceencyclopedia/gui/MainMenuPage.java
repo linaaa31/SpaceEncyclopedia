@@ -1,5 +1,6 @@
 package spaceencyclopedia.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -17,130 +18,154 @@ import spaceencyclopedia.core.Star;
 import spaceencyclopedia.manager.EncyclopediaManager;
 
 public class MainMenuPage extends BasePage {
+
     private EncyclopediaManager manager;
     private JLabel title;
     private JButton planetsButton;
-    private JButton dwarfPlanetsButton;
     private JButton moonsButton;
     private JButton starsButton;
     private JButton asteroidsButton;
     private JButton cometsButton;
-    private JButton blackHolesButton;
     private JButton nebulaeButton;
-    private JButton funFactsButton;
     private JButton favoritesButton;
     private JButton searchButton;
 
     public MainMenuPage(EncyclopediaManager manager) {
         super("Solar System Menu");
-        this.manager= manager;
+        this.manager = manager;
         BackgroundPanel panel = new BackgroundPanel("/spaceencyclopedia/images/img.png");
         panel.setLayout(new GridBagLayout());
         JPanel menuPanel = new JPanel();
         menuPanel.setOpaque(false);
-        menuPanel.setLayout(new BoxLayout(menuPanel, 1));
-        this.title = this.createLabel("SOLAR SYSTEM MENU", 40, 1);
-        this.planetsButton = this.createButton("Planets");
-        this.planetsButton.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent e) {
-                        new PlanetsPage(manager).setVisible(true);
-                        dispose();
-                    }
-                });
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
 
-        this.moonsButton = this.createButton("Satellites");
-        this.moonsButton.addActionListener(new java.awt.event.ActionListener() {
+        title = createLabel("SOLAR SYSTEM MENU", 40, Font.BOLD);
+        planetsButton = createButton("Planets");
+        moonsButton = createButton("Satellites");
+        starsButton = createButton("Star");
+        asteroidsButton = createButton("Asteroids");
+        cometsButton = createButton("Comets");
+        nebulaeButton = createButton("Nebulae");
+        favoritesButton = createButton("Favorites");
+        searchButton = createButton("Search");
+        makeDarkButton(favoritesButton);
+        makeDarkButton(searchButton);
+        planetsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new PlanetsPage(manager).setVisible(true);
+                dispose();
+            }
+        });
+
+        moonsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 new SatellitesPage(manager).setVisible(true);
                 dispose();
             }
         });
-        this.starsButton = this.createButton("Star");
+
         Star star = (Star) manager.searchByName("Sun");
-        this.starsButton.addActionListener(new java.awt.event.ActionListener() {
+
+        starsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                new StarDetailsPage(star,manager).setVisible(true);
+                new StarDetailsPage(star, manager).setVisible(true);
                 dispose();
             }
-        });
-        this.cometsButton = this.createButton("Comets");
-        this.cometsButton.addActionListener(e -> {
-            new CometsPage(manager).setVisible(true);
-            dispose();
         });
 
-        this.nebulaeButton = this.createButton("Nebulae");
-        nebulaeButton.addActionListener(e -> {
-            new NebulaePage(manager).setVisible(true);
-            dispose();
-        });
-        this.favoritesButton = this.createButton("Favorites");
-        this.favoritesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                new FavoritesPage(manager).setVisible(true);
-                dispose();
-            }
-        });
-        this.searchButton = this.createButton("Search");
-        this.asteroidsButton = this.createButton("Asteroids");
-        this.asteroidsButton.addActionListener(new java.awt.event.ActionListener() {
+        asteroidsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 new AsteroidsPage(manager).setVisible(true);
                 dispose();
             }
         });
+
+        cometsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new CometsPage(manager).setVisible(true);
+                dispose();
+            }
+        });
+
+        nebulaeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new NebulaePage(manager).setVisible(true);
+                dispose();
+            }
+        });
+
+        favoritesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new FavoritesPage(manager).setVisible(true);
+                dispose();
+            }
+        });
+
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new SearchPage(manager).setVisible(true);
+                dispose();
+            }
+        });
+
         JPanel gridPanel = new JPanel();
         gridPanel.setOpaque(false);
-        gridPanel.setLayout(new GridLayout(5, 2, 20, 15));
+        gridPanel.setLayout(new GridLayout(4, 2, 20, 15));
 
-        gridPanel.add(this.moonsButton);
-        gridPanel.add(this.starsButton);
-        gridPanel.add(this.asteroidsButton);
-        gridPanel.add(this.cometsButton);
-        gridPanel.add(this.nebulaeButton);
-        gridPanel.add(this.favoritesButton);
-        gridPanel.add(this.searchButton);
-        this.planetsButton.setAlignmentX(0.5F);
-        menuPanel.add(this.title);
-        menuPanel.add(Box.createVerticalStrut(30));
-        menuPanel.add(this.planetsButton);
-        menuPanel.add(Box.createVerticalStrut(25));
+        gridPanel.add(planetsButton);
+        gridPanel.add(moonsButton);
+        gridPanel.add(starsButton);
+        gridPanel.add(asteroidsButton);
+        gridPanel.add(cometsButton);
+        gridPanel.add(nebulaeButton);
+        gridPanel.add(favoritesButton);
+        gridPanel.add(searchButton);
+
+        menuPanel.add(title);
+        menuPanel.add(Box.createVerticalStrut(40));
         menuPanel.add(gridPanel);
+
         panel.add(menuPanel);
-        this.add(panel);
-        this.addComponentListener(new ComponentAdapter() {
+        add(panel);
+
+        addComponentListener(new ComponentAdapter() {
             {
                 Objects.requireNonNull(MainMenuPage.this);
             }
 
             public void componentResized(ComponentEvent e) {
-                MainMenuPage.this.resizeComponents();
+                resizeComponents();
             }
         });
-        this.resizeComponents();
+
+        resizeComponents();
+    }
+
+    private void makeDarkButton(JButton button) {
+        button.setBackground(new Color(5, 10, 35));
+        button.setForeground(Color.WHITE);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
     }
 
     private void resizeComponents() {
-        int width = this.getWidth();
-        this.title.setFont(new Font("Serif", 1, width / 18));
-        new Font("Arial", 1, width / 35);
-        Font normalButtonFont = new Font("Arial", 1, width / 50);
-        this.planetsButton.setFont(normalButtonFont);
-        this.planetsButton.setPreferredSize(new Dimension(this.getWidth() - 350,
-                this.getHeight() / 10));
-        this.planetsButton.setMaximumSize(new Dimension(this.getWidth() - 350,
-                this.getHeight() / 10));
-        this.planetsButton.setMinimumSize(new Dimension(300, 60));
-        JButton[] buttons = new JButton[]{this.moonsButton,
-                this.starsButton, this.asteroidsButton, this.cometsButton,
-                this.nebulaeButton, this.searchButton, this.favoritesButton};
+        int width = getWidth();
 
-        for(JButton button : buttons) {
+        title.setFont(new Font("Serif", Font.BOLD, width / 18));
+
+        Font normalButtonFont = new Font("Arial", Font.BOLD, width / 50);
+
+        JButton[] buttons = new JButton[]{
+                planetsButton, moonsButton, starsButton, asteroidsButton,
+                cometsButton, nebulaeButton, favoritesButton, searchButton
+        };
+
+        for (JButton button : buttons) {
             button.setFont(normalButtonFont);
             button.setPreferredSize(new Dimension(width / 4, width / 18));
         }
 
-        this.revalidate();
-        this.repaint();
+        revalidate();
+        repaint();
     }
 }

@@ -13,13 +13,10 @@ public class StarsPage extends BasePage {
         super("Stars");
 
         this.manager = manager;
-
-        BackgroundPanel backgroundPanel =
-                new BackgroundPanel("/spaceencyclopedia/images/img_1.png");
+        BackgroundPanel backgroundPanel = new BackgroundPanel("/spaceencyclopedia/images/img_1.png");
 
         backgroundPanel.setLayout(new BorderLayout());
         backgroundPanel.add(new StarsPanel(), BorderLayout.CENTER);
-
         setContentPane(backgroundPanel);
     }
 
@@ -56,32 +53,19 @@ public class StarsPage extends BasePage {
                     dispose();
                 }
             });
-
             add(backButton);
         }
 
         public void doLayout() {
             int w = getWidth();
             int h = getHeight();
-
             title.setBounds(0, 20, w, 80);
-
             title.setHorizontalAlignment(SwingConstants.CENTER);
-
             backButton.setBounds(25, 25, 110, 40);
-
             int size = Math.min(w, h) / 2 + 120;
-
             ImageIcon icon = loadStarIcon("sun", size);
-
             sunButton.setIcon(icon);
-
-            sunButton.setBounds(
-                    w / 2 - icon.getIconWidth() / 2,
-                    h / 2 - icon.getIconHeight() / 2 + 40,
-                    icon.getIconWidth(),
-                    icon.getIconHeight()
-            );
+            sunButton.setBounds(w / 2 - icon.getIconWidth() / 2, h / 2 - icon.getIconHeight() / 2 + 40, icon.getIconWidth(), icon.getIconHeight());
         }
     }
 
@@ -108,25 +92,18 @@ public class StarsPage extends BasePage {
             System.out.println("Image not found: " + path);
             return null;
         }
-
         int originalWidth = originalIcon.getIconWidth();
         int originalHeight = originalIcon.getIconHeight();
 
         int width = size;
         int height = originalHeight * width / originalWidth;
 
-        Image scaledImage = originalIcon.getImage().getScaledInstance(
-                width,
-                height,
-                Image.SCALE_SMOOTH
-        );
-
+        Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImage);
     }
 
     private ImageIcon loadImage(String path) {
         java.net.URL imageUrl = getClass().getResource(path);
-
         if (imageUrl == null) {
             return null;
         }

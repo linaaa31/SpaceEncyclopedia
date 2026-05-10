@@ -22,7 +22,7 @@ public abstract class BasePage extends JFrame {
     protected JButton createButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 18));
-        button.setBackground(Color.WHITE);
+        button.setForeground(new Color(5, 10, 35));
         button.setForeground(Color.BLACK);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         return button;
