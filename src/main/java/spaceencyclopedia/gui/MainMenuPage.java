@@ -41,20 +41,28 @@ public class MainMenuPage extends BasePage {
         menuPanel.setLayout(new BoxLayout(menuPanel, 1));
         this.title = this.createLabel("MILKY WAY MENU", 40, 1);
         this.planetsButton = this.createButton("Planets");
-        this.planetsButton.addActionListener(e -> {
-            new PlanetsPage(manager).setVisible(true);
-            dispose();
-        });
+        this.planetsButton.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent e) {
+                        new PlanetsPage(manager).setVisible(true);
+                        dispose();
+                    }
+                });
 
         this.dwarfPlanetsButton = this.createButton("Dwarf Planets");
-        this.dwarfPlanetsButton = this.createButton("Dwarf Planets");
-        this.moonsButton = this.createButton("Moons");
-        this.starsButton = this.createButton("Stars");
-        starsButton.addActionListener(e -> {
-            new StarsPage(manager).setVisible(true);
-            dispose();
+        this.moonsButton = this.createButton("Satellites");
+        this.moonsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new SatellitesPage(manager).setVisible(true);
+                dispose();
+            }
         });
-        this.asteroidsButton = this.createButton("Asteroids");
+        this.starsButton = this.createButton("Stars");
+        this.starsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new StarsPage(manager).setVisible(true);
+                dispose();
+            }
+        });
         this.cometsButton = this.createButton("Comets");
         this.blackHolesButton = this.createButton("Black Holes");
         this.nebulaeButton = this.createButton("Nebulae");
@@ -62,10 +70,11 @@ public class MainMenuPage extends BasePage {
         this.favoritesButton = this.createButton("Favorites");
         this.searchButton = this.createButton("Search");
         this.asteroidsButton = this.createButton("Asteroids");
-
-        this.asteroidsButton.addActionListener(e -> {
-            new AsteroidsPage(manager).setVisible(true);
-            dispose();
+        this.asteroidsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new AsteroidsPage(manager).setVisible(true);
+                dispose();
+            }
         });
         JPanel gridPanel = new JPanel();
         gridPanel.setOpaque(false);

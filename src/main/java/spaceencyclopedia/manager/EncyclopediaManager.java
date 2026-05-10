@@ -1,10 +1,5 @@
 package spaceencyclopedia.manager;
-import spaceencyclopedia.core.Galaxy;
-import spaceencyclopedia.core.Planet;
-import spaceencyclopedia.core.SpaceObject;
-import spaceencyclopedia.core.Star;
-import spaceencyclopedia.core.Asteroid;
-import spaceencyclopedia.core.Comet;
+import spaceencyclopedia.core.*;
 import spaceencyclopedia.exception.InvalidSpaceObjectException;
 
 import java.util.ArrayList;
@@ -13,7 +8,7 @@ public class EncyclopediaManager {
     private ArrayList<SpaceObject> objects;
     public void loadSampleData() {
 try {
-    addObject(new Planet("Earth", "Planet",
+    Planet earth = new Planet("Earth", "Planet",
             "The third planet from the Sun and the only known planet that supports life.",
             "Earth is the third planet from the Sun and the only known world that supports life. " +
                     "Its surface contains oceans, mountains, deserts, forests, rivers, and polar ice caps. " +
@@ -56,8 +51,30 @@ try {
                     "in the Pacific Ocean. Earth is sometimes called the Blue Planet because water dominates its appearance from space.\n\n" +
                     "A day on Earth is gradually becoming slightly longer over time because of the Moon’s gravitational effects. " +
                     "Earth is also the only planet not named after a Roman or Greek god.",
-            6371, 5.97, 149.6, false, 1));
-
+            6371, 5.97, 149.6, false, 1);
+    Satellite moon = new Satellite("Moon", "Satellite",
+            "Earth's only natural satellite.",
+            "Earth",
+            "The Moon is Earth's only natural satellite and the brightest object in the night sky after the Sun. " +
+                    "It has a strong influence on Earth, especially because its gravity affects ocean tides. " +
+                    "Although the Moon looks bright from Earth, its surface is actually quite dark and reflects only a small part of the sunlight that reaches it.\n\n" +
+                    "The Moon is large compared to Earth. It is the largest natural satellite relative to the size of its planet, " +
+                    "with about 27 percent of Earth's diameter. Its surface is covered with craters, plains, mountains, dust, and broken rock.",
+            "The most accepted explanation for the Moon's origin is the giant impact hypothesis. " +
+                    "According to this idea, a Mars-sized body collided with the young Earth. " +
+                    "Material thrown into space from this impact later came together and formed the Moon about 4.53 billion years ago.",
+            "The Moon has been studied by telescopes, robotic spacecraft, and human missions. " +
+                    "NASA's Apollo missions brought astronauts to the lunar surface and returned rock samples to Earth. " +
+                    "Modern missions continue studying the Moon's surface, interior, water ice, and possible resources for future exploration.",
+            "The Moon's surface is covered by a layer of loose dust and broken rock called regolith. " +
+                    "Moonquakes can occur inside the Moon, partly because of tidal forces caused by Earth's gravity. " +
+                    "The Moon is also slowly moving away from Earth over time.",
+            1737,
+            384400,
+            true);
+    earth.addSatellite(moon);
+    addObject(earth);
+    addObject(moon);
     addObject(new Planet("Mercury", "Planet",
             "The smallest and closest planet to the Sun.",
             "Mercury is the closest planet to the Sun and the smallest planet in the Solar System. " +
@@ -77,7 +94,6 @@ try {
                     "Despite being closest to the Sun, it is not the hottest planet — Venus is hotter because of its thick atmosphere.\n\n" +
                     "Mercury also has a weak magnetic field and large cliffs caused by the planet shrinking over time.",
             2439, 0.330, 57.9, false, 0));
-
     addObject(new Planet("Venus", "Planet",
             "The hottest planet in the Solar System.",
             "Venus is the second planet from the Sun and is often called Earth’s sister planet because of its similar size. " +
@@ -95,7 +111,8 @@ try {
                     "Venus is one of the brightest natural objects visible in Earth’s sky and is often called the Morning Star or Evening Star.",
             6051, 4.87, 108.2, false, 0));
 
-    addObject(new Planet("Mars", "Planet",
+
+    Planet mars = new Planet("Mars", "Planet",
             "The Red Planet known for its dusty surface and giant volcanoes.",
             "Mars is the fourth planet from the Sun and is commonly called the Red Planet because of iron oxide on its surface. " +
                     "It has deserts, polar ice caps, canyons, and extinct volcanoes.\n\n" +
@@ -109,9 +126,57 @@ try {
             "A Martian day is very similar to an Earth day, lasting about 24.6 hours. " +
                     "Mars has two small moons named Phobos and Deimos.\n\n" +
                     "Dust storms on Mars can sometimes cover the entire planet for weeks.",
-            3389, 0.642, 227.9, false, 2));
-
-    addObject(new Planet("Jupiter", "Planet",
+            3389, 0.642, 227.9, false, 2);
+    Satellite phobos = new Satellite("Phobos", "Satellite",
+            "The larger and closer moon of Mars.",
+            "Mars",
+            "Phobos is the larger and closer of the two natural satellites of Mars. " +
+                    "It is a small irregularly shaped moon with a dark surface covered in craters, dust, and grooves. " +
+                    "Phobos orbits extremely close to Mars and moves around the planet faster than Mars rotates.\n\n" +
+                    "Because of this unusual orbit, Phobos rises in the west and sets in the east when viewed from the Martian surface. " +
+                    "Its surface contains many impact craters, the largest of which is called Stickney Crater.\n\n" +
+                    "Scientists believe Phobos may either be a captured asteroid or material left over from the early formation of Mars.",
+            "Phobos was discovered in 1877 by the American astronomer Asaph Hall shortly after the discovery of Deimos. " +
+                    "The moon was named after Phobos, the Greek god of fear and panic, who accompanied the war god Ares in mythology.\n\n" +
+                    "Scientists think Phobos formed billions of years ago. " +
+                    "Its origin is still debated because its composition resembles some types of asteroids.",
+            "Phobos has been photographed and studied by many spacecraft orbiting Mars, including Viking, Mars Express, MAVEN, and others. " +
+                    "These missions helped scientists map its surface and study its internal structure.\n\n" +
+                    "Future missions may land on Phobos and return samples to Earth because the moon could provide important information " +
+                    "about Mars and the early Solar System.",
+            "Phobos is slowly moving closer to Mars because of gravitational forces. " +
+                    "Scientists predict that in tens of millions of years it may either crash into Mars or break apart and form a ring system.\n\n" +
+                    "Phobos completes one orbit around Mars in only about 7 hours and 39 minutes, making it one of the fastest-orbiting moons in the Solar System.",
+            11.3, 9377, true);
+    mars.addSatellite(phobos);
+    addObject(phobos);
+    Satellite deimos = new Satellite("Deimos", "Satellite",
+            "The smaller and more distant moon of Mars.",
+            "Mars",
+            "Deimos is the smaller and outer of the two natural satellites of Mars. " +
+                    "It is a small, irregularly shaped moon with a dark surface that looks similar to some asteroids. " +
+                    "Unlike Phobos, Deimos orbits farther away from Mars and moves more slowly around the planet.\n\n" +
+                    "Deimos has a smoother appearance than Phobos because some of its craters are partly filled with loose surface material. " +
+                    "It is much smaller than Earth’s Moon and would appear almost like a bright star from the surface of Mars.\n\n" +
+                    "Because Deimos is small and distant, it was difficult to discover and study. " +
+                    "Scientists continue to investigate whether it is a captured asteroid or material connected to Mars’s early history.",
+            "Deimos was discovered in 1877 by the American astronomer Asaph Hall. " +
+                    "He discovered both Martian moons during the same year while observing Mars. " +
+                    "The moon was named after Deimos, a figure from Greek mythology associated with dread and terror.\n\n" +
+                    "Its origin is still debated. Some scientists think Deimos may have been captured from the asteroid belt, " +
+                    "while others suggest that it may have formed from debris after a large impact involving Mars.",
+            "Deimos has been photographed and studied by spacecraft that explored Mars, including orbiters and missions that observed the Martian moons. " +
+                    "These observations helped scientists understand its shape, surface, orbit, and relationship with Mars.\n\n" +
+                    "Future missions, such as Japan’s Martian Moons eXploration mission, are expected to study Phobos and Deimos in more detail. " +
+                    "These missions may help explain how the Martian moons formed and what they can reveal about the early Solar System.",
+            "Deimos orbits Mars about every 30 hours. " +
+                    "Unlike Phobos, which is slowly moving closer to Mars, Deimos is slowly moving farther away from the planet.\n\n" +
+                    "Deimos is very small, with a mean radius of about 6.2 kilometers. " +
+                    "Its average distance from the center of Mars is about 23,460 kilometers.", 6.2, 23460, true);
+    mars.addSatellite(deimos);
+    addObject(deimos);
+    addObject(mars);
+    Planet jupiter = new Planet("Jupiter", "Planet",
             "The largest planet in the Solar System.",
             "Jupiter is the fifth planet from the Sun and the largest planet in the Solar System. " +
                     "It is a gas giant made mostly of hydrogen and helium and does not have a solid surface like Earth.\n\n" +
@@ -127,9 +192,110 @@ try {
             "Jupiter is so massive that more than 1,300 Earths could fit inside it. " +
                     "Its magnetic field is the strongest of any planet in the Solar System.\n\n" +
                     "A day on Jupiter lasts only about 10 hours, making it the fastest rotating planet.",
-            69911, 1898, 778.5, true, 101));
-
-    addObject(new Planet("Saturn", "Planet",
+            69911, 1898, 778.5, true, 101);
+    Satellite callisto = new Satellite("Callisto", "Satellite",
+            "One of Jupiter's four large Galilean moons.",
+            "Jupiter",
+            "Callisto is the second largest moon of Jupiter and one of the four Galilean moons discovered by Galileo Galilei. " +
+                    "It is heavily covered with craters and is considered one of the oldest surfaces in the Solar System. " +
+                    "Unlike some other large moons, Callisto shows little evidence of volcanic or tectonic activity.\n\n" +
+                    "Its surface is made mostly of ice and rock, and scientists believe a salty ocean may exist deep beneath its crust. " +
+                    "Because Callisto receives less radiation from Jupiter than moons like Europa or Io, it is considered one of the safer locations " +
+                    "for possible future exploration in the Jovian system.\n\n" +
+                    "Callisto is the third largest moon in the Solar System and is only slightly smaller than the planet Mercury.",
+            "Callisto was discovered in 1610 by the Italian astronomer Galileo Galilei together with Io, Europa, and Ganymede. " +
+                    "The moon was named after Callisto, a figure from Greek mythology associated with the god Zeus.\n\n" +
+                    "Scientists believe Callisto formed from material surrounding Jupiter during the early formation of the Solar System. " +
+                    "Its ancient surface preserved the marks of impacts over billions of years because little geological activity has changed it.",
+            "Callisto has been studied by spacecraft including Pioneer, Voyager, Galileo, and Juno. " +
+                    "These missions provided detailed images of its heavily cratered surface and measurements of its magnetic and internal properties.\n\n" +
+                    "The Galileo spacecraft discovered evidence suggesting that Callisto may contain a subsurface ocean beneath its icy crust. " +
+                    "Scientists continue studying Callisto because it may help explain the formation of icy moons and giant planets.",
+            "Callisto has the most heavily cratered surface of any large moon in the Solar System. " +
+                    "One of its largest impact structures is called Valhalla, a huge ring-shaped basin extending thousands of kilometers.\n\n" +
+                    "Unlike many other moons, Callisto has almost no major mountains or volcanoes. " +
+                    "Its average distance from Jupiter is about 1,882,700 kilometers.",
+            2410, 1882700, true);
+    jupiter.addSatellite(callisto);
+    addObject(callisto);
+    Satellite europa = new Satellite("Europa", "Satellite",
+            "An icy Galilean moon of Jupiter that may have a subsurface ocean.",
+            "Jupiter",
+            "Europa is one of Jupiter's four large Galilean moons and is one of the most interesting moons in the Solar System. " +
+                    "It is slightly smaller than Earth's Moon and has a bright icy surface covered with long cracks, ridges, and dark streaks. " +
+                    "Europa's surface has relatively few large craters, which suggests that it is geologically young compared to many other moons.\n\n" +
+                    "Scientists believe Europa may have a deep ocean of salty liquid water beneath its icy crust. " +
+                    "Because liquid water is one of the key conditions for life, Europa is considered one of the most important places to study " +
+                    "when searching for potentially habitable environments beyond Earth.\n\n" +
+                    "Europa is strongly affected by Jupiter's gravity. Tidal forces stretch and squeeze the moon, creating heat inside it. " +
+                    "This internal heating may help keep Europa's hidden ocean liquid beneath the frozen surface.",
+            "Europa was discovered in 1610 by Galileo Galilei, along with Io, Ganymede, and Callisto. " +
+                    "These four moons are called the Galilean moons because Galileo was the first person to observe them with a telescope.\n\n" +
+                    "Europa likely formed from material surrounding Jupiter during the early history of the Solar System. " +
+                    "Over billions of years, interactions with Jupiter and the other Galilean moons helped shape Europa's orbit, surface, and interior.",
+            "Europa has been studied by spacecraft such as Voyager, Galileo, Juno, and telescopes observing from Earth and space. " +
+                    "The Galileo spacecraft provided important evidence that Europa may contain a subsurface ocean beneath its icy shell.\n\n" +
+                    "NASA's Europa Clipper mission is designed to study Europa in detail during many flybys of Jupiter's moon. " +
+                    "The mission will investigate Europa's ice shell, ocean, surface composition, and possible habitability.",
+            "Europa has one of the smoothest surfaces of any solid object in the Solar System. " +
+                    "Its average distance from Jupiter is about 671,000 kilometers, and it takes about 3.5 Earth days to orbit Jupiter.\n\n" +
+                    "Europa is tidally locked to Jupiter, which means the same side of Europa always faces the planet. " +
+                    "Although Europa is very cold on the surface, its hidden ocean makes it one of the most exciting worlds for future exploration.",
+            1561, 671000, true);
+    jupiter.addSatellite(europa);
+    addObject(europa);
+    Satellite ganymede = new Satellite("Ganymede", "Satellite",
+            "The largest moon in the Solar System and one of Jupiter's Galilean moons.",
+            "Jupiter",
+            "Ganymede is the largest moon in the Solar System and one of the four Galilean moons of Jupiter. " +
+                    "It is even larger than the planet Mercury and is the only moon known to have its own magnetic field. " +
+                    "Ganymede's surface contains two main types of terrain: dark heavily cratered regions and lighter grooved regions " +
+                    "formed by geological activity.\n\n" +
+                    "Scientists believe that beneath Ganymede's icy crust there may be several layers of underground salty oceans. " +
+                    "Because of its size, internal structure, and magnetic field, Ganymede is considered one of the most scientifically important moons in the Solar System.\n\n" +
+                    "The moon is made mostly of rock and water ice. Its surface temperatures are extremely cold, and thin oxygen is present in its very weak atmosphere.",
+            "Ganymede was discovered in 1610 by Galileo Galilei together with Io, Europa, and Callisto. " +
+                    "The moon was named after Ganymede, a figure from Greek mythology associated with Zeus.\n\n" +
+                    "Scientists believe Ganymede formed from material orbiting Jupiter during the early formation of the Solar System. " +
+                    "Over time, gravitational interactions and internal heating shaped its interior and surface features.",
+            "Ganymede has been explored by spacecraft such as Pioneer, Voyager, Galileo, Juno, and the Hubble Space Telescope. " +
+                    "These missions provided detailed images and evidence of subsurface oceans and magnetic activity.\n\n" +
+                    "The European Space Agency's JUICE mission was launched to study Jupiter and its icy moons, especially Ganymede. " +
+                    "Scientists hope this mission will reveal more about its hidden oceans and potential habitability.",
+            "Ganymede is the only moon in the Solar System known to generate its own magnetic field. " +
+                    "It has a diameter of about 5,268 kilometers, making it larger than Mercury.\n\n" +
+                    "Ganymede orbits Jupiter at an average distance of about 1,070,000 kilometers and takes about seven Earth days to complete one orbit.",
+            2634, 1070000, true);
+    jupiter.addSatellite(ganymede);
+    addObject(ganymede);
+    Satellite io = new Satellite("Io", "Satellite",
+            "The most volcanically active moon in the Solar System.",
+            "Jupiter",
+            "Io is the innermost of Jupiter's four large Galilean moons and is the most volcanically active world in the Solar System. " +
+                    "Hundreds of volcanoes cover its surface, and some eruptions send lava and volcanic material hundreds of kilometers into space. " +
+                    "Its colorful surface is covered with sulfur compounds, lava flows, volcanic plains, and mountains.\n\n" +
+                    "Io's extreme volcanic activity is caused by powerful tidal forces from Jupiter and neighboring moons. " +
+                    "These forces constantly stretch and squeeze Io, creating enormous internal heat inside the moon. " +
+                    "Because of this heating, Io remains geologically active even after billions of years.\n\n" +
+                    "Unlike Europa or Ganymede, Io has very little water ice. " +
+                    "Instead, it is mostly made of rock and molten material beneath its surface.",
+            "Io was discovered in 1610 by Galileo Galilei together with Europa, Ganymede, and Callisto. " +
+                    "The moon was named after Io, a figure from Greek mythology associated with Zeus.\n\n" +
+                    "Scientists believe Io formed from material orbiting Jupiter during the early formation of the Solar System. " +
+                    "Its volcanic activity developed because of strong gravitational interactions with Jupiter and the other Galilean moons.",
+            "Io has been explored by spacecraft such as Pioneer, Voyager, Galileo, New Horizons, and Juno. " +
+                    "These missions revealed active volcanoes, lava lakes, giant plumes, and rapidly changing surface features.\n\n" +
+                    "NASA's Galileo spacecraft provided some of the most detailed observations of Io's volcanoes and surface composition. " +
+                    "More recently, the Juno spacecraft performed close flybys that helped scientists study Io's interior and volcanic systems.",
+            "Io has more active volcanoes than any other known world in the Solar System. " +
+                    "Some lava fountains rise dozens of kilometers above the surface.\n\n" +
+                    "Io orbits Jupiter at an average distance of about 421,700 kilometers and completes one orbit in about 1.77 Earth days. " +
+                    "Because of tidal locking, the same side of Io always faces Jupiter.",
+            1821, 421700, true);
+    jupiter.addSatellite(io);
+    addObject(io);
+    addObject(jupiter);
+    Planet saturn = new Planet("Saturn", "Planet",
             "The famous ringed planet of the Solar System.",
             "Saturn is the sixth planet from the Sun and is best known for its spectacular ring system. " +
                     "The rings are made mostly of ice and rocky particles of different sizes.\n\n" +
@@ -144,9 +310,104 @@ try {
                     "The mission provided detailed images of the rings and discovered important information about Titan and Enceladus.",
             "Saturn is the least dense planet in the Solar System and could theoretically float in water if there were an ocean large enough.\n\n" +
                     "Its ring system stretches hundreds of thousands of kilometers but is surprisingly thin.",
-            58232, 568, 1434, true, 285));
-
-    addObject(new Planet("Uranus", "Planet",
+            58232, 568, 1434, true, 285);
+    Satellite dione = new Satellite("Dione", "Satellite",
+            "An icy moon of Saturn known for its bright cliffs and cratered surface.", "Saturn",
+            "Dione is one of Saturn's major icy moons and the fifteenth largest moon in the Solar System. " +
+                    "Its surface is covered with impact craters, cliffs, valleys, and bright icy streaks that were once called 'wispy terrain'. " +
+                    "Scientists later discovered that these bright features are actually large ice cliffs and fractures in the surface.\n\n" +
+                    "Dione is made mostly of water ice with a rocky interior. " +
+                    "The moon has both heavily cratered ancient regions and smoother areas that formed later, showing that geological activity once reshaped parts of its surface.\n\n" +
+                    "Some evidence suggests that Dione may contain a subsurface liquid ocean deep beneath its icy crust. " +
+                    "Because of this, scientists consider Dione one of the interesting icy worlds in Saturn's system.",
+            "Dione was discovered in 1684 by the Italian astronomer Giovanni Cassini, who also discovered several other moons of Saturn. " +
+                    "The moon was named after Dione, a figure from Greek mythology associated with the Titans.\n\n" +
+                    "Scientists believe Dione formed from material orbiting Saturn during the early formation of the Solar System. " +
+                    "Over billions of years, impacts and internal activity shaped its current appearance.",
+            "Dione has been explored by spacecraft such as Pioneer 11, Voyager 1, Voyager 2, and especially NASA's Cassini spacecraft. " +
+                    "Cassini captured highly detailed images of Dione's cliffs, craters, fractures, and icy terrain.\n\n" +
+                    "Data collected by Cassini helped scientists study Dione's internal structure and possible underground ocean. " +
+                    "The moon continues to be important for understanding the evolution of icy moons around giant planets.",
+            "Dione is tidally locked to Saturn, meaning the same side always faces the planet. " +
+                    "It orbits Saturn approximately every 2.7 Earth days at a distance similar to the Earth-Moon distance.\n\n" +
+                    "Dione has two small co-orbital moons named Helene and Polydeuces that share parts of its orbit around Saturn.",
+            562, 377400, true);
+    saturn.addSatellite(dione);
+    addObject(dione);
+    Satellite iapetus = new Satellite("Iapetus", "Satellite",
+            "A large moon of Saturn known for its unusual two-tone surface.", "Saturn",
+            "Iapetus is the third-largest natural satellite of Saturn and one of the most unusual moons in the Solar System. " +
+                    "It is famous for its two-tone appearance: one side is very dark, while the other side is much brighter. " +
+                    "Because of this strong contrast, Iapetus is sometimes described as a moon with a light side and a dark side.\n\n" +
+                    "The moon is made mostly of ice and rock. Its surface is heavily cratered, showing that it is very old and has been shaped by many impacts. " +
+                    "Iapetus also has a strange ridge around much of its equator, making it look different from most other moons.\n\n" +
+                    "Iapetus orbits much farther from Saturn than many of Saturn's other large moons. " +
+                    "Because of its distant orbit, it gives scientists important information about the outer parts of Saturn's moon system.",
+            "Iapetus was discovered in 1671 by the Italian astronomer Giovanni Cassini. " +
+                    "Cassini noticed that the moon was easier to see on one side of Saturn than on the other, which later helped scientists understand its unusual bright and dark surface.\n\n" +
+                    "Scientists believe Iapetus formed from icy and rocky material around Saturn early in the history of the Solar System. " +
+                    "Its ancient surface has preserved impact craters and surface features for billions of years.",
+            "Iapetus has been studied by spacecraft such as Voyager 1, Voyager 2, and especially NASA's Cassini spacecraft. " +
+                    "Cassini captured detailed images of Iapetus and helped scientists study its dark material, bright icy regions, craters, and equatorial ridge.\n\n" +
+                    "The Cassini mission showed that Iapetus has one of the most unusual surfaces among Saturn's moons. " +
+                    "Scientists still study Iapetus to understand how its two-color surface and equatorial ridge formed.",
+            "Iapetus is sometimes called Saturn's 'yin and yang' moon because of its very dark leading side and much brighter trailing side. " +
+                    "Its equatorial ridge gives it a shape that looks different from most round moons.\n\n" +
+                    "Iapetus has a mean radius of about 736 kilometers and orbits Saturn at an average distance of about 3,560,000 kilometers.",
+            736, 3560000, true);
+    saturn.addSatellite(iapetus);
+    addObject(iapetus);
+    Satellite titan = new Satellite("Titan", "Satellite",
+            "The largest moon of Saturn and one of the most Earth-like worlds in the Solar System.", "Saturn",
+            "Titan is the largest moon of Saturn and the second largest moon in the Solar System after Ganymede. " +
+                    "It is one of the most fascinating worlds in the Solar System because it has a thick atmosphere, rivers, lakes, clouds, and weather systems. " +
+                    "Titan's atmosphere is made mostly of nitrogen, similar to Earth's atmosphere, although it is much colder.\n\n" +
+                    "Unlike Earth, Titan's lakes and rivers are filled with liquid methane and ethane instead of water. " +
+                    "Scientists believe Titan may also contain a hidden subsurface ocean of liquid water beneath its icy crust.\n\n" +
+                    "Titan's orange appearance comes from complex organic molecules in its atmosphere. " +
+                    "Because Titan contains organic chemistry and liquid systems, scientists consider it one of the most important places " +
+                    "for studying conditions that may resemble the early Earth.",
+            "Titan was discovered in 1655 by the Dutch astronomer Christiaan Huygens. " +
+                    "It was the first known moon of Saturn to be discovered and remains one of the most studied moons in the Solar System.\n\n" +
+                    "Scientists believe Titan formed from icy and rocky material orbiting Saturn during the early formation of the Solar System. " +
+                    "Over billions of years, Titan developed its thick atmosphere and complex surface systems.",
+            "Titan has been explored by Pioneer 11, Voyager 1, Voyager 2, and especially NASA's Cassini spacecraft. " +
+                    "The European Space Agency's Huygens probe landed on Titan in 2005, becoming the first spacecraft to land in the outer Solar System.\n\n" +
+                    "The Cassini-Huygens mission revealed Titan's lakes, rivers, dunes, clouds, and atmospheric chemistry in great detail. " +
+                    "NASA's Dragonfly mission is planned to explore Titan further using a flying robotic drone designed to study its surface and chemistry.",
+            "Titan is the only moon in the Solar System with a dense atmosphere. " +
+                    "It is also the only world besides Earth known to have stable liquid lakes and rivers on its surface.\n\n" +
+                    "Titan orbits Saturn at an average distance of about 1,222,000 kilometers and takes about 16 Earth days to complete one orbit. " +
+                    "Its thick atmosphere creates weather patterns including methane rain and seasonal climate changes.",
+            2575, 1222000, true);
+    saturn.addSatellite(titan);
+    addObject(titan);
+    Satellite mimas = new Satellite("Mimas", "Satellite",
+            "A small icy moon of Saturn known for its giant impact crater.",
+            "Saturn",
+            "Mimas is one of Saturn's smaller icy moons and is best known for the enormous crater on its surface called Herschel Crater. " +
+                    "This crater is so large compared to the size of the moon that Mimas is often compared to the fictional Death Star from Star Wars. " +
+                    "The moon's surface is heavily cratered and made mostly of water ice.\n\n" +
+                    "Mimas has a cold and ancient surface shaped by billions of years of impacts. " +
+                    "Scientists believe the moon may contain more internal structure than previously expected, and some studies suggest it could even contain a hidden subsurface ocean.\n\n" +
+                    "Because Mimas is relatively small, its gravity is weak and it has no atmosphere. " +
+                    "Its icy surface reflects a large amount of sunlight.",
+            "Mimas was discovered in 1789 by the British astronomer William Herschel. " +
+                    "The moon was named after Mimas, a giant from Greek mythology.\n\n" +
+                    "Scientists believe Mimas formed from icy and rocky material orbiting Saturn early in the history of the Solar System. " +
+                    "Its surface has remained mostly unchanged for billions of years because it has little geological activity.",
+            "Mimas has been studied by spacecraft including Pioneer 11, Voyager 1, Voyager 2, and NASA's Cassini spacecraft. " +
+                    "Cassini provided highly detailed images of Herschel Crater and other surface features.\n\n" +
+                    "Recent scientific studies using Cassini data suggested that Mimas may not be completely frozen inside. " +
+                    "This possibility has made the moon more scientifically interesting than previously believed.",
+            "Herschel Crater is about one-third the diameter of Mimas itself. " +
+                    "The impact that created it almost shattered the moon completely.\n\n" +
+                    "Mimas orbits Saturn at an average distance of about 185,500 kilometers and takes less than one Earth day to complete one orbit around the planet.",
+            198, 185500, true);
+    saturn.addSatellite(mimas);
+    addObject(mimas);
+    addObject(saturn);
+    Planet uranus = new Planet("Uranus", "Planet",
             "An ice giant that rotates on its side.",
             "Uranus is the seventh planet from the Sun and is classified as an ice giant. " +
                     "Its atmosphere contains hydrogen, helium, and methane, which gives the planet its blue-green color.\n\n" +
@@ -162,9 +423,105 @@ try {
             "A season on Uranus lasts about 21 Earth years because of its unusual rotation. " +
                     "The planet is one of the coldest worlds in the Solar System.\n\n" +
                     "Uranus was the first planet discovered using a telescope.",
-            25362, 86.8, 2871, true, 29));
+            25362, 86.8, 2871, true, 29);
+    Satellite ariel = new Satellite("Ariel", "Satellite",
+            "One of Uranus's largest icy moons known for its bright surface and deep valleys.",
+            "Uranus",
+            "Ariel is one of the five major moons of Uranus and is considered one of the brightest moons in the Solar System because of its highly reflective icy surface. " +
+                    "Its surface contains valleys, cliffs, canyons, ridges, and relatively few large craters compared to many other icy moons.\n\n" +
+                    "Scientists believe Ariel experienced geological activity in the past. " +
+                    "Parts of its surface appear younger and smoother, suggesting that icy material may once have flowed across the moon. " +
+                    "The moon is composed mainly of water ice mixed with rocky material.\n\n" +
+                    "Ariel is one of the most geologically interesting moons of Uranus and may have once contained internal heat that reshaped parts of its surface.",
+            "Ariel was discovered in 1851 by the British astronomer William Lassell. " +
+                    "The moon was named after a spirit character appearing in works by William Shakespeare and Alexander Pope.\n\n" +
+                    "Scientists believe Ariel formed from material orbiting Uranus early in the Solar System's history. " +
+                    "Over time, impacts and possible internal activity helped create its canyons and smooth plains.",
+            "Ariel has only been visited by one spacecraft: NASA's Voyager 2 during its flyby of Uranus in 1986. " +
+                    "Voyager 2 captured detailed images showing Ariel's valleys, ridges, icy plains, and relatively young surface.\n\n" +
+                    "Scientists continue studying Ariel using telescope observations and Voyager 2 data to better understand icy moons and the Uranian system.",
+            "Ariel has one of the brightest surfaces among Uranus's moons because its icy surface reflects a large amount of sunlight. " +
+                    "The moon orbits Uranus at an average distance of about 191,000 kilometers and takes about 2.5 Earth days to complete one orbit.\n\n" +
+                    "Large fractures and valleys on Ariel may have formed when the moon expanded as internal water froze and changed volume.",
+            579, 191000, true);
+    uranus.addSatellite(ariel);
+    addObject(ariel);
+    Satellite titania = new Satellite("Titania", "Satellite",
+            "The largest moon of Uranus and one of its five major satellites.", "Uranus",
+            "Titania is the largest moon of Uranus and one of the most important moons in the Uranian system. " +
+                    "Its surface contains enormous valleys, cliffs, craters, and icy plains formed over billions of years. " +
+                    "Scientists believe Titania is made of nearly equal amounts of rock and water ice.\n\n" +
+                    "The moon shows evidence of geological activity in the past. " +
+                    "Large fault valleys and fractures suggest that Titania may once have expanded internally, causing its surface to crack. " +
+                    "Its surface is less heavily cratered than some older moons, which means parts of it may have been resurfaced long ago.\n\n" +
+                    "Titania is extremely cold and has a very thin atmosphere containing traces of carbon dioxide. " +
+                    "Because of its size and structure, scientists think Titania may possibly contain a subsurface liquid layer deep below its icy crust.",
+            "Titania was discovered in 1787 by the British astronomer William Herschel, the same astronomer who discovered Uranus itself. " +
+                    "The moon was named after Titania, the queen of the fairies in William Shakespeare's play 'A Midsummer Night's Dream'.\n\n" +
+                    "Scientists believe Titania formed from icy and rocky material surrounding Uranus during the early history of the Solar System. " +
+                    "Impacts, internal heating, and surface fracturing later shaped the moon's appearance.",
+            "Titania has only been visited by one spacecraft: NASA's Voyager 2 during its flyby of Uranus in 1986. " +
+                    "Voyager 2 captured images showing giant canyons, cliffs, craters, and icy plains across Titania's surface.\n\n" +
+                    "Scientists continue studying Voyager 2 data and telescope observations to better understand Titania's composition, geology, and possible internal structure. " +
+                    "Future missions to Uranus may study Titania in much greater detail.",
+            "Titania contains one of the largest known canyon systems among Uranus's moons. " +
+                    "Some cliffs and valleys extend for hundreds of kilometers across its surface.\n\n" +
+                    "Titania orbits Uranus at an average distance of about 436,000 kilometers and takes about 8.7 Earth days to complete one orbit around the planet.",
+            789, 436000, true);
+    uranus.addSatellite(titania);
+    addObject(titania);
+    Satellite miranda = new Satellite("Miranda", "Satellite",
+            "The smallest and most unusual of Uranus's major moons.",
+            "Uranus",
+            "Miranda is the smallest and innermost of Uranus's five major moons and is famous for its strange and dramatic surface. " +
+                    "Its surface contains enormous cliffs, deep canyons, ridges, terraces, and regions that look completely different from one another. " +
+                    "Because of these unusual features, Miranda is often considered one of the strangest moons in the Solar System.\n\n" +
+                    "Scientists believe Miranda may have been shattered and reassembled in the distant past because different parts of its surface appear very different in age and structure. " +
+                    "Large fault canyons and steep cliffs suggest that geological activity once reshaped much of the moon.\n\n" +
+                    "Miranda is made mostly of water ice mixed with rocky material. " +
+                    "Although it is small, its surface shows signs of past internal heating and tectonic activity.",
+            "Miranda was discovered in 1948 by the Dutch-American astronomer Gerard Kuiper. " +
+                    "The moon was named after Miranda, a character from William Shakespeare's play 'The Tempest'.\n\n" +
+                    "Scientists believe Miranda formed from material orbiting Uranus early in the Solar System's history. " +
+                    "Some researchers think the moon may have experienced major collisions that broke it apart before gravity pulled the pieces back together.",
+            "Miranda has only been closely explored by NASA's Voyager 2 spacecraft during its flyby of Uranus in 1986. " +
+                    "Voyager 2 revealed enormous cliffs, strange surface patterns, and geological formations unlike those on most other moons.\n\n" +
+                    "The data collected by Voyager 2 remains the main source of detailed information about Miranda. " +
+                    "Scientists continue studying those images to understand how such a small moon developed such a complex surface.",
+            "Miranda contains Verona Rupes, one of the tallest known cliffs in the Solar System, which may rise more than 20 kilometers high. " +
+                    "The moon orbits Uranus at an average distance of about 130,000 kilometers and completes one orbit in about 1.4 Earth days.\n\n" +
+                    "Miranda's patchwork-like appearance makes it one of the most visually unique moons in the Solar System.",
+            236, 130000, true);
+    uranus.addSatellite(miranda);
+    addObject(miranda);
 
-    addObject(new Planet("Neptune", "Planet",
+    Satellite oberon = new Satellite("Oberon", "Satellite",
+            "The outermost and second-largest major moon of Uranus.",
+            "Uranus",
+            "Oberon is the second-largest moon of Uranus and the outermost of Uranus's five major satellites. " +
+                    "Its surface is heavily covered with impact craters, mountains, valleys, and bright ejecta material produced by collisions over billions of years. " +
+                    "The moon is composed mainly of water ice mixed with rocky material.\n\n" +
+                    "Oberon has one of the darkest surfaces among Uranus's major moons, although bright ice can be seen around some impact craters. " +
+                    "Large fractures and valleys suggest that internal geological activity may once have affected its surface.\n\n" +
+                    "Because Oberon orbits far from Uranus, scientists believe it preserves ancient surface features that can provide information about the early Solar System and the history of Uranus's moon system.",
+            "Oberon was discovered in 1787 by the British astronomer William Herschel, the same astronomer who discovered Uranus itself. " +
+                    "The moon was named after Oberon, the king of the fairies in William Shakespeare's play 'A Midsummer Night's Dream'.\n\n" +
+                    "Scientists believe Oberon formed from icy and rocky material surrounding Uranus during the formation of the Solar System. " +
+                    "Impacts and possible internal expansion later shaped its surface and valleys.",
+            "Oberon has only been visited by NASA's Voyager 2 spacecraft during its flyby of Uranus in 1986. " +
+                    "Voyager 2 provided the first close-up images of Oberon's heavily cratered surface and large fault valleys.\n\n" +
+                    "Because only one side of Oberon was photographed in detail by Voyager 2, much of the moon remains poorly explored. " +
+                    "Future missions to Uranus may reveal far more about its geology and internal structure.",
+            "Oberon is the outermost major moon of Uranus and orbits the planet at an average distance of about 584,000 kilometers. " +
+                    "It takes about 13.5 Earth days to complete one orbit around Uranus.\n\n" +
+                    "Some craters on Oberon contain bright material that may be exposed ice from beneath the surface. " +
+                    "The moon's ancient and heavily cratered appearance makes it one of the oldest-looking moons in the Uranian system.",
+            761, 584000, true);
+    uranus.addSatellite(oberon);
+    addObject(oberon);
+    addObject(uranus);
+
+   Planet neptune = new Planet("Neptune", "Planet",
             "The farthest major planet from the Sun.",
             "Neptune is the eighth and farthest known planet from the Sun. " +
                     "It is an ice giant with a deep blue atmosphere caused by methane gas.\n\n" +
@@ -180,7 +537,57 @@ try {
             "Neptune has the strongest winds of any planet in the Solar System. " +
                     "A year on Neptune lasts about 165 Earth years.\n\n" +
                     "Triton is one of the coldest known objects in the Solar System and may contain underground oceans.",
-            24622, 102, 4495, true, 16));
+            24622, 102, 4495, true, 16);
+    Satellite triton = new Satellite("Triton", "Satellite",
+            "The largest moon of Neptune and one of the coldest worlds in the Solar System.",
+            "Neptune",
+            "Triton is the largest natural satellite of Neptune and one of the most unusual moons in the Solar System. " +
+                    "It is unique because it orbits Neptune in the opposite direction of the planet's rotation, a motion called retrograde orbit. " +
+                    "Scientists believe this unusual orbit means Triton was probably captured by Neptune long ago rather than forming around the planet.\n\n" +
+                    "Triton's surface is covered with nitrogen ice, frozen water, and frozen carbon dioxide. " +
+                    "The moon has plains, ridges, valleys, craters, and icy volcano-like features called cryovolcanoes. " +
+                    "Its surface temperature is extremely cold, making Triton one of the coldest known objects in the Solar System.\n\n" +
+                    "Despite its cold environment, Triton is geologically active. " +
+                    "Scientists observed geyser-like eruptions that release nitrogen gas and dark material above the surface.",
+            "Triton was discovered in 1846 by the British astronomer William Lassell shortly after the discovery of Neptune itself. " +
+                    "The moon was named after Triton, the son of Poseidon in Greek mythology.\n\n" +
+                    "Scientists think Triton may originally have been a dwarf planet from the Kuiper Belt before Neptune captured it through gravity. " +
+                    "Its unusual orbit and composition support this idea.",
+            "Triton has only been visited by one spacecraft: NASA's Voyager 2 during its flyby of Neptune in 1989. " +
+                    "Voyager 2 revealed Triton's icy surface, active geysers, and unusual terrain in remarkable detail.\n\n" +
+                    "The mission showed that Triton is one of the few moons in the Solar System with active geology. " +
+                    "Scientists continue studying Voyager 2 data to better understand Triton's atmosphere, surface activity, and possible internal ocean.",
+            "Triton orbits Neptune at an average distance of about 355,000 kilometers and takes about 5.9 Earth days to complete one orbit. " +
+                    "Because of tidal forces, Triton is slowly moving closer to Neptune and may eventually break apart in the distant future.\n\n" +
+                    "Triton has a thin atmosphere made mainly of nitrogen, and its geysers can send material several kilometers above the surface.",
+            1353, 355000, true);
+    neptune.addSatellite(triton);
+    addObject(triton);
+    Satellite proteus = new Satellite("Proteus", "Satellite",
+            "The second-largest moon of Neptune and one of the darkest moons in the Solar System.",
+            "Neptune",
+            "Proteus is the second-largest natural satellite of Neptune after Triton. " +
+                    "It is an irregularly shaped moon with a dark, heavily cratered surface made mostly of ice and rocky material. " +
+                    "Unlike many large moons, Proteus is not perfectly spherical because its gravity is not strong enough to fully pull it into a round shape.\n\n" +
+                    "The surface of Proteus contains many impact craters and rough terrain formed over billions of years. " +
+                    "One of its largest craters is called Pharos, which stretches across a large part of the moon.\n\n" +
+                    "Proteus reflects very little sunlight, making it one of the darker moons in the Solar System. " +
+                    "Scientists believe it formed from material orbiting Neptune after Triton was captured by the planet.",
+            "Proteus was discovered in 1989 by scientists studying images taken by NASA's Voyager 2 spacecraft during its flyby of Neptune. " +
+                    "The moon was named after Proteus, a sea god from Greek mythology associated with the ocean.\n\n" +
+                    "Scientists think Proteus formed from debris orbiting Neptune after major gravitational changes in the Neptunian system. " +
+                    "Its irregular shape and ancient cratered surface preserve information about Neptune's history.",
+            "Proteus has only been closely observed by Voyager 2. " +
+                    "The spacecraft captured images showing its dark surface, irregular shape, and giant craters.\n\n" +
+                    "Because no spacecraft has visited Neptune since Voyager 2, much about Proteus remains unknown. " +
+                    "Future missions to Neptune could provide much more detailed information about the moon's composition and internal structure.",
+            "Proteus is one of the largest known moons that is not completely spherical. " +
+                    "Its average distance from Neptune is about 117,600 kilometers, and it completes one orbit around Neptune in less than 27 hours.\n\n" +
+                    "The moon's dark surface reflects only a small amount of sunlight, making it difficult to observe from Earth.",
+            210, 117600, true);
+    neptune.addSatellite(proteus);
+    addObject(proteus);
+    addObject(neptune);
     addObject(new Star("Sun", "Star",
             "The star at the center of the Solar System.",
             "The Sun is the star at the center of the Solar System. It provides the light and " +
@@ -273,7 +680,15 @@ try {
 
         return stars;
     }
-
+    public ArrayList<Satellite> getSatellites() {
+        ArrayList<Satellite> satellites = new ArrayList<>();
+        for (SpaceObject object : objects) {
+            if (object instanceof Satellite) {
+                satellites.add((Satellite) object);
+            }
+        }
+        return satellites;
+    }
     public ArrayList<Galaxy> getGalaxies() {
         ArrayList<Galaxy> galaxies = new ArrayList<>();
 

@@ -22,10 +22,12 @@ public class StartPage extends BasePage {
         JLabel subtitle = createLabel("Explore the Milky Way Galaxy", 26, Font.PLAIN);
         JButton enterButton = createButton("Enter Spacepedia");
 
-        enterButton.addActionListener(e -> {
-            System.out.println("Enter button clicked");
-            new MainMenuPage().setVisible(true);
-            dispose();
+        enterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                System.out.println("Enter button clicked");
+                new MainMenuPage().setVisible(true);
+                dispose();
+            }
         });
 
         JPanel textPanel = new JPanel();

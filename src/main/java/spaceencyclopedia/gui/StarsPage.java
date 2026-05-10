@@ -37,16 +37,12 @@ public class StarsPage extends BasePage {
 
             sunButton = createStarButton("sun", 580);
 
-
-            sunButton.addActionListener(e -> {
-
-                Star selectedStar =
-                        (Star) manager.searchByName("Sun");
-
-                new StarDetailsPage(selectedStar, manager)
-                        .setVisible(true);
-
-                dispose();
+            sunButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    Star selectedStar = (Star) manager.searchByName("Sun");
+                    new StarDetailsPage(selectedStar, manager).setVisible(true);
+                    dispose();
+                }
             });
 
             add(sunButton);
@@ -54,9 +50,11 @@ public class StarsPage extends BasePage {
             backButton = createButton("Back");
             backButton.setFont(new Font("Arial", Font.BOLD, 16));
 
-            backButton.addActionListener(e -> {
-                new MainMenuPage().setVisible(true);
-                dispose();
+            backButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    new MainMenuPage().setVisible(true);
+                    dispose();
+                }
             });
 
             add(backButton);

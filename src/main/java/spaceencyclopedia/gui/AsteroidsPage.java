@@ -21,8 +21,7 @@ public class AsteroidsPage extends BasePage {
 
         this.manager = manager;
 
-        BackgroundPanel backgroundPanel =
-                new BackgroundPanel("/spaceencyclopedia/images/asteroidBackground.jpg");
+        BackgroundPanel backgroundPanel = new BackgroundPanel("/spaceencyclopedia/images/asteroidBackground.jpg");
 
         backgroundPanel.setLayout(new BorderLayout());
         JPanel contentPanel = new JPanel();
@@ -104,9 +103,11 @@ public class AsteroidsPage extends BasePage {
         backButton.setPreferredSize(new Dimension(200, 60));
 
         backButton.setFont(new Font("Serif", Font.BOLD, 24));
-        backButton.addActionListener(e -> {
-            new MainMenuPage().setVisible(true);
-            dispose();
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new MainMenuPage().setVisible(true);
+                dispose();
+            }
         });
 
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);

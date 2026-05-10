@@ -87,9 +87,11 @@ public class StarDetailsPage extends BasePage {
 
         JButton backButton = createButton("Back");
         backButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-        backButton.addActionListener(e -> {
-            new StarsPage(manager).setVisible(true);
-            dispose();
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                new StarsPage(manager).setVisible(true);
+                dispose();
+            }
         });
 
         contentPanel.add(title);

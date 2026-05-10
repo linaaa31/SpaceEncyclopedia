@@ -43,13 +43,12 @@ private EncyclopediaManager manager;
 
             for (String planet : planets) {
                 JButton button = createPlanetButton(planet, 80);
-                button.addActionListener(e -> {
-                    Planet selectedPlanet =
-                            (Planet) manager.searchByName(planet);
-
-                    new PlanetDetailsPage(selectedPlanet, manager).setVisible(true);
-
-                    dispose();
+                button.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent e) {
+                        Planet selectedPlanet = (Planet) manager.searchByName(planet);
+                        new PlanetDetailsPage(selectedPlanet, manager).setVisible(true);
+                        dispose();
+                    }
                 });
 
                 planetButtons.add(button);
@@ -58,17 +57,18 @@ private EncyclopediaManager manager;
             backButton = createButton("Back");
             backButton.setFont(new Font("Arial", Font.BOLD, 16));
 
-            backButton.addActionListener(e -> {
-                new MainMenuPage().setVisible(true);
-                dispose();
+            backButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    new MainMenuPage().setVisible(true);
+                    dispose();
+                }
             });
 
             add(backButton);
         }
         private void drawSun(Graphics2D g2, int h){
 
-            ImageIcon sunIcon =
-                    loadImage("/spaceencyclopedia/images/sun.png");
+            ImageIcon sunIcon = loadImage("/spaceencyclopedia/images/sun.png");
 
             if (sunIcon != null){
                 g2.drawImage(sunIcon.getImage(), -350, h / 2 - 250, 500, 500, this);

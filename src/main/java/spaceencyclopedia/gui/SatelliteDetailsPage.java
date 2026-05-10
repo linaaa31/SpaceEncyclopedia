@@ -1,21 +1,21 @@
 package spaceencyclopedia.gui;
 
-import spaceencyclopedia.core.Planet;
+import spaceencyclopedia.core.Satellite;
 import spaceencyclopedia.manager.EncyclopediaManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class PlanetDetailsPage extends BasePage {
+public class SatelliteDetailsPage extends BasePage {
 
-    private Planet planet;
+    private Satellite satellite;
     private EncyclopediaManager manager;
 
-    public PlanetDetailsPage(Planet planet, EncyclopediaManager manager) {
-        super(planet.getName());
+    public SatelliteDetailsPage(Satellite satellite, EncyclopediaManager manager) {
+        super(satellite.getName());
 
-        this.planet = planet;
+        this.satellite = satellite;
         this.manager = manager;
 
         BackgroundPanel backgroundPanel =
@@ -35,38 +35,43 @@ public class PlanetDetailsPage extends BasePage {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
-        JLabel title = createLabel(planet.getName().toUpperCase(), 48, Font.BOLD);
+        JLabel title = createLabel(satellite.getName().toUpperCase(), 48, Font.BOLD);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel imageLabel = new JLabel();
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        String imagePath = "/spaceencyclopedia/images/" + planet.getName().toLowerCase() + ".png";
+        String imagePath = "/spaceencyclopedia/images/" +
+                satellite.getName().toLowerCase() + ".png";
 
         java.net.URL imageURL = getClass().getResource(imagePath);
 
         if (imageURL != null) {
             ImageIcon icon = new ImageIcon(imageURL);
-//            Image scaledImage = icon.getImage().getScaledInstance(
-//                    350, 350, Image.SCALE_SMOOTH
-//            );
-//            imageLabel.setIcon(new ImageIcon(scaledImage));
+
             Image originalImage = icon.getImage();
             int originalWidth = icon.getIconWidth();
             int originalHeight = icon.getIconHeight();
+
             int newWidth = 350;
             int newHeight = (originalHeight * newWidth) / originalWidth;
-            Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+
+            Image scaledImage = originalImage.getScaledInstance(
+                    newWidth, newHeight, Image.SCALE_SMOOTH
+            );
 
             imageLabel.setIcon(new ImageIcon(scaledImage));
         } else {
-            imageLabel.setText("Planet image not found");
+            imageLabel.setText("Satellite image not found");
             imageLabel.setForeground(Color.WHITE);
         }
 
-        JTextArea factsArea = new JTextArea("Radius: " + planet.getRadius() + " km" + "\n\nMass: " + planet.getMass() + " ×10^24 kg" +
-                "\n\nDistance from Sun: " + planet.getDistanceFromSun() + " million km" + "\n\nHas Rings: " + planet.getHasRings() +
-                "\n\nNumber of Satellites: " + planet.getNumberOfSatellites());
+        JTextArea factsArea = new JTextArea(
+                "Parent Planet: " + satellite.getParentPlanet() +
+                        "\n\nRadius: " + satellite.getRadius() + " km" +
+                        "\n\nDistance from Planet: " + satellite.getDistanceFromPlanet() + " km" +
+                        "\n\nNatural Satellite: " + satellite.isNatural()
+        );
 
         factsArea.setEditable(false);
         factsArea.setOpaque(false);
@@ -84,8 +89,12 @@ public class PlanetDetailsPage extends BasePage {
         topPanel.add(imageLabel, BorderLayout.WEST);
         topPanel.add(factsArea, BorderLayout.CENTER);
 
-        JTextArea infoArea = new JTextArea("ABOUT THE PLANET\n\n" + planet.getOverview() + "\n\nORIGINS AND FORMATION\n\n" + planet.getFormation() +
-                "\n\nEXPLORATION AND DISCOVERIES\n\n" + planet.getExploration() + "\n\nINTERESTING FACTS\n\n" + planet.getInterestingFacts());
+        JTextArea infoArea = new JTextArea(
+                "ABOUT THE SATELLITE\n\n" + satellite.getOverview() +
+                        "\n\nDISCOVERY AND ORIGIN\n\n" + satellite.getDiscovery() +
+                        "\n\nEXPLORATION\n\n" + satellite.getExploration() +
+                        "\n\nINTERESTING FACTS\n\n" + satellite.getInterestingFacts()
+        );
 
         infoArea.setEditable(false);
         infoArea.setOpaque(false);
@@ -95,14 +104,17 @@ public class PlanetDetailsPage extends BasePage {
         infoArea.setWrapStyleWord(true);
         infoArea.setMaximumSize(new Dimension(1200, Integer.MAX_VALUE));
         infoArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JButton favoriteButton = createButton("Add to Favorites");
         JButton backButton = createButton("Back");
+
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                new PlanetsPage(manager).setVisible(true);
+                new SatellitesPage(manager).setVisible(true);
                 dispose();
             }
         });
+
         favoriteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -115,7 +127,6 @@ public class PlanetDetailsPage extends BasePage {
         contentPanel.add(favoriteButton);
         contentPanel.add(Box.createVerticalStrut(15));
         contentPanel.add(backButton);
-
         backgroundPanel.add(scrollPane, BorderLayout.CENTER);
         add(backgroundPanel);
     }
