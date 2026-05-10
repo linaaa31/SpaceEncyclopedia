@@ -122,7 +122,7 @@ try {
             "Jupiter is so massive that more than 1,300 Earths could fit inside it. " +
                     "Its magnetic field is the strongest of any planet in the Solar System.\n\n" +
                     "A day on Jupiter lasts only about 10 hours, making it the fastest rotating planet.",
-            69911, 1898, 778.5, true, 95));
+            69911, 1898, 778.5, true, 101));
     addObject(new Planet("Saturn", "Planet",
             "The famous ringed planet of the Solar System.",
             "Saturn is the sixth planet from the Sun and is best known for its spectacular ring system. " +
@@ -137,7 +137,7 @@ try {
                     "The mission provided detailed images of the rings and discovered important information about Titan and Enceladus.",
             "Saturn is the least dense planet in the Solar System and could theoretically float in water if there were an ocean large enough.\n\n" +
                     "Its ring system stretches hundreds of thousands of kilometers but is surprisingly thin.",
-            58232, 568, 1434, true, 146));
+            58232, 568, 1434, true, 285));
 
     addObject(new Planet("Uranus", "Planet",
             "An ice giant that rotates on its side.", "Uranus is the seventh planet from the Sun and is classified as an ice giant. " +
@@ -151,7 +151,7 @@ try {
                     "Scientists hope future missions will explore Uranus in much greater detail.",
             "A season on Uranus lasts about 21 Earth years because of its unusual rotation. " + "The planet is one of the coldest worlds in the Solar System.\n\n" +
                     "Uranus was the first planet discovered using a telescope.",
-            25362, 86.8, 2871, true, 27));
+            25362, 86.8, 2871, true, 29));
 
     addObject(new Planet("Neptune", "Planet", "The farthest major planet from the Sun.",
             "Neptune is the eighth and farthest known planet from the Sun. " + "It is an ice giant with a deep blue atmosphere caused by methane gas.\n\n" +
@@ -164,7 +164,7 @@ try {
                     "Modern telescopes continue studying Neptune’s changing atmosphere and weather systems.",
             "Neptune has the strongest winds of any planet in the Solar System. " + "A year on Neptune lasts about 165 Earth years.\n\n" +
                     "Triton is one of the coldest known objects in the Solar System and may contain underground oceans.",
-            24622, 102, 4495, true, 14));
+            24622, 102, 4495, true, 16));
     addObject(new Star("Sun", "Star",
             "The star at the center of the Solar System.",
 
