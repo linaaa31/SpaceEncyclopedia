@@ -712,8 +712,11 @@ try {
             "The most famous comet in history.",
 
 
-            "Halley’s Comet is the most famous comet in history. " +
-                    "It becomes visible from Earth approximately every 76 years.",
+            "The most famous comet in history." + "Halley’s Comet is the most famous comet in history. " +
+                    "It becomes visible from Earth approximately every 76 years." +
+                    "The comet is believed to originate from the Kuiper Belt."+
+                    "As it approaches the Sun, Halley’s Comet develops a bright tail visible from Earth."+
+                    "Scientists study Halley’s Comet to better understand the early Solar System.",
 
 
             "The comet is believed to originate from the Kuiper Belt.",
@@ -743,7 +746,11 @@ try {
             "One of the brightest comets of the 20th century.",
 
 
-            "Hale–Bopp was one of the brightest comets ever observed.",
+            "One of the brightest comets of the 20th century." +
+                    "Hale–Bopp was one of the brightest comets ever observed."+
+                    "It traveled into the inner Solar System from distant outer regions." +
+                    "The comet displayed an enormous bright tail visible for months." +
+                    "Its long visibility allowed scientists to perform extensive observations.",
 
 
             "It traveled into the inner Solar System from distant outer regions.",
@@ -774,7 +781,11 @@ try {
             "A bright comet visible in 2020.",
 
 
-            "Comet NEOWISE became very popular in 2020 because it was visible to the naked eye.",
+            "A bright comet visible in 2020." +
+                    "Comet NEOWISE became very popular in 2020 because it was visible to the naked eye."+
+                    "It was discovered by NASA's NEOWISE space telescope."+
+                    "The comet developed a long golden tail while approaching the Sun." +
+                    "Scientists used the comet to study comet composition and dust behavior.",
 
 
             "It was discovered by NASA's NEOWISE space telescope.",
@@ -805,7 +816,10 @@ try {
             "A comet famous for colliding with Jupiter.",
 
 
-            "Shoemaker–Levy 9 became famous after colliding with Jupiter in 1994.",
+            "A comet famous for colliding with Jupiter."+
+                    "Shoemaker–Levy 9 became famous after colliding with Jupiter in 1994." +
+                    "Fragments of the comet crashed into Jupiter’s atmosphere causing enormous explosions."+
+                    "The collision helped scientists better understand impacts in the Solar System.",
 
 
             "The comet was captured by Jupiter’s gravity before impact.",
@@ -836,7 +850,11 @@ try {
             "The comet visited by the Rosetta spacecraft.",
 
 
-            "Comet 67P became famous because of the European Space Agency Rosetta mission.",
+            "The comet visited by the Rosetta spacecraft."+
+                    "Comet 67P became famous because of the European Space Agency Rosetta mission."+
+                    "It is a periodic comet orbiting the Sun every few years."+
+                    "The comet releases gas and dust when heated by the Sun."+
+                    "The Rosetta mission provided valuable information about comet composition and structure.",
 
 
             "It is a periodic comet orbiting the Sun every few years.",

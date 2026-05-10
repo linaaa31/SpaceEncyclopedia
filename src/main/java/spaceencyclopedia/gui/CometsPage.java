@@ -134,28 +134,28 @@ public class CometsPage extends BasePage {
         JPanel panel = new JPanel(new BorderLayout(30, 20));
         panel.setOpaque(false);
 
-        // IMAGE (LEFT)
+
         JLabel imageLabel = createImageLabel(
                 comet.getImagePath(),
                 220
         );
 
-        // TEXT PANEL (RIGHT SIDE)
+
         JPanel textPanel = new JPanel();
         textPanel.setOpaque(false);
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
 
-        // NAME (BOLD)
+
         JLabel nameLabel = new JLabel(comet.getName());
         nameLabel.setFont(new Font("Serif", Font.BOLD, 26));
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // DESCRIPTION
+
         JTextArea description = createTextArea(comet.getOverview());
         description.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // FACTS
+
         JTextArea facts = createTextArea(comet.getInterestingFacts());
         facts.setAlignmentX(Component.LEFT_ALIGNMENT);
 
