@@ -65,7 +65,6 @@ public class Planet extends SpaceObject {
 
     public void addSatellite(Satellite satellite) {
         satellites.add(satellite);
-        numberOfSatellites = satellites.size();
     }
 
     public ArrayList<Satellite> getSatellites() {

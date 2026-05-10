@@ -1,6 +1,7 @@
 package spaceencyclopedia.gui;
 
 import spaceencyclopedia.core.Planet;
+import spaceencyclopedia.core.Satellite;
 import spaceencyclopedia.manager.EncyclopediaManager;
 
 import javax.swing.*;
@@ -47,10 +48,6 @@ public class PlanetDetailsPage extends BasePage {
 
         if (imageURL != null) {
             ImageIcon icon = new ImageIcon(imageURL);
-//            Image scaledImage = icon.getImage().getScaledInstance(
-//                    350, 350, Image.SCALE_SMOOTH
-//            );
-//            imageLabel.setIcon(new ImageIcon(scaledImage));
             Image originalImage = icon.getImage();
             int originalWidth = icon.getIconWidth();
             int originalHeight = icon.getIconHeight();
@@ -110,6 +107,59 @@ public class PlanetDetailsPage extends BasePage {
         contentPanel.add(Box.createVerticalStrut(30));
         contentPanel.add(topPanel);
         contentPanel.add(Box.createVerticalStrut(40));
+
+        if (!planet.getSatellites().isEmpty()) {
+            JLabel moonsTitle = createLabel("(SOME)SATELLITES OF " + planet.getName().toUpperCase(), 32, Font.BOLD);
+            moonsTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+            JPanel moonsPanel = new JPanel();
+            moonsPanel.setOpaque(false);
+            moonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 20)
+            );
+
+            for (Satellite satellite : planet.getSatellites()) {
+                JPanel moonContainer = new JPanel();
+                moonContainer.setOpaque(false);
+                moonContainer.setLayout(new BoxLayout(moonContainer, BoxLayout.Y_AXIS));
+                moonContainer.setPreferredSize(new Dimension(220, 230));//
+                String moonImagePath = "/spaceencyclopedia/images/" + satellite.getName().toLowerCase()+ ".png";
+                java.net.URL moonImageURL = getClass().getResource(moonImagePath);
+                JButton moonButton = new JButton();
+                if (moonImageURL != null) {
+                    ImageIcon moonIcon =new ImageIcon(moonImageURL);
+                    Image scaledMoon =moonIcon.getImage().getScaledInstance(120,120, Image.SCALE_SMOOTH);
+                    moonButton.setIcon(new ImageIcon(scaledMoon));
+                }else{
+                    moonButton.setText(satellite.getName());
+                }
+                moonButton.setContentAreaFilled(false);
+                moonButton.setBorderPainted(false);
+                moonButton.setFocusPainted(false);
+                moonButton.setOpaque(false);
+                moonButton.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent e) {
+                                new SatelliteDetailsPage(satellite, manager).setVisible(true);
+                                dispose();}
+                        });
+                JLabel moonName = new JLabel(satellite.getName());
+
+                moonName.setForeground(Color.WHITE);
+                moonName.setFont(new Font("Serif", Font.BOLD, 18));
+
+                moonName.setPreferredSize(new Dimension(220, 35));
+                moonName.setMaximumSize(new Dimension(220, 35));
+
+                moonName.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+                moonContainer.add(moonButton);
+                moonContainer.add(Box.createVerticalStrut(8));
+                moonContainer.add(moonName);
+                moonsPanel.add(moonContainer);
+            }
+            contentPanel.add(moonsTitle);
+            contentPanel.add(Box.createVerticalStrut(20));
+            contentPanel.add(moonsPanel);
+            contentPanel.add(Box.createVerticalStrut(40));
+        }
         contentPanel.add(infoArea);
         contentPanel.add(Box.createVerticalStrut(40));
         contentPanel.add(favoriteButton);
