@@ -57,12 +57,13 @@ try {
                     "A day on Earth is gradually becoming slightly longer over time because of the Moon’s gravitational effects. " +
                     "Earth is also the only planet not named after a Roman or Greek god.",
             6371, 5.97, 149.6, false, 1));
+
     addObject(new Planet("Mercury", "Planet",
             "The smallest and closest planet to the Sun.",
             "Mercury is the closest planet to the Sun and the smallest planet in the Solar System. " +
                     "Because of its proximity to the Sun, temperatures on Mercury can become extremely hot during the day " +
                     "and extremely cold at night. The planet has a rocky surface filled with craters caused by asteroid impacts.\n\n" +
-                    "Mercury has almost no atmosphere to trap heat, which is why temperature differences are so dramatic. " +
+                    "Mercury has an extremely thin exosphere, so it cannot trap heat like planets with thick atmospheres. " +
                     "Its surface resembles Earth’s Moon because both worlds experienced heavy bombardment early in Solar System history.\n\n" +
                     "A year on Mercury lasts only 88 Earth days, making it the fastest planet to orbit the Sun.",
             "Mercury formed around 4.5 billion years ago from gas and dust surrounding the young Sun. " +
@@ -81,14 +82,16 @@ try {
             "The hottest planet in the Solar System.",
             "Venus is the second planet from the Sun and is often called Earth’s sister planet because of its similar size. " +
                     "However, Venus has an extremely thick atmosphere made mostly of carbon dioxide, creating a powerful greenhouse effect.\n\n" +
-                    "Surface temperatures on Venus are hot enough to melt lead, making it the hottest planet in the Solar System. " + "The atmosphere is also filled with clouds of sulfuric acid.\n\n" +
+                    "Surface temperatures on Venus are hot enough to melt lead, making it the hottest planet in the Solar System. " +
+                    "The atmosphere is also filled with clouds of sulfuric acid.\n\n" +
                     "Venus rotates very slowly and in the opposite direction compared to most planets.",
             "Venus formed billions of years ago from material left over after the Sun formed. " +
                     "Scientists think Venus may once have had oceans before its greenhouse effect became uncontrollable.\n\n" +
                     "Over time, rising temperatures caused water to disappear and transformed Venus into a hostile world.",
             "Many Soviet Venera spacecraft successfully landed on Venus and sent back photographs before being destroyed by the heat and pressure.\n\n" +
                     "Modern missions continue studying Venus to understand climate change and atmospheric evolution.",
-            "A day on Venus is longer than a year on Venus. " + "The planet spins backward compared to most planets in the Solar System.\n\n" +
+            "A day on Venus is longer than a year on Venus. " +
+                    "The planet spins backward compared to most planets in the Solar System.\n\n" +
                     "Venus is one of the brightest natural objects visible in Earth’s sky and is often called the Morning Star or Evening Star.",
             6051, 4.87, 108.2, false, 0));
 
@@ -103,16 +106,18 @@ try {
                     "Today Mars is cold and dry, though frozen water still exists at the poles and underground.",
             "Mars has been explored by many robotic missions including Spirit, Opportunity, Curiosity, and Perseverance.\n\n" +
                     "Scientists study Mars to search for signs of ancient microbial life and to prepare for possible future human missions.",
-            "A Martian day is very similar to an Earth day, lasting about 24.6 hours. " + "Mars has two small moons named Phobos and Deimos.\n\n" +
+            "A Martian day is very similar to an Earth day, lasting about 24.6 hours. " +
+                    "Mars has two small moons named Phobos and Deimos.\n\n" +
                     "Dust storms on Mars can sometimes cover the entire planet for weeks.",
             3389, 0.642, 227.9, false, 2));
+
     addObject(new Planet("Jupiter", "Planet",
             "The largest planet in the Solar System.",
             "Jupiter is the fifth planet from the Sun and the largest planet in the Solar System. " +
                     "It is a gas giant made mostly of hydrogen and helium and does not have a solid surface like Earth.\n\n" +
                     "Jupiter is famous for its Great Red Spot, a gigantic storm larger than Earth that has existed for centuries. " +
                     "The planet also has faint rings and an extremely powerful magnetic field.\n\n" +
-                    "Jupiter has dozens of moons, including Ganymede, the largest moon in the Solar System.",
+                    "Jupiter has over 100 confirmed moons, including Ganymede, the largest moon in the Solar System.",
             "Jupiter formed around 4.5 billion years ago from gas and dust left over after the Sun formed. " +
                     "Because of its enormous gravity, Jupiter played a major role in shaping the Solar System.\n\n" +
                     "Scientists believe Jupiter may have helped protect inner planets by attracting or deflecting many asteroids and comets.",
@@ -123,11 +128,13 @@ try {
                     "Its magnetic field is the strongest of any planet in the Solar System.\n\n" +
                     "A day on Jupiter lasts only about 10 hours, making it the fastest rotating planet.",
             69911, 1898, 778.5, true, 101));
+
     addObject(new Planet("Saturn", "Planet",
             "The famous ringed planet of the Solar System.",
             "Saturn is the sixth planet from the Sun and is best known for its spectacular ring system. " +
                     "The rings are made mostly of ice and rocky particles of different sizes.\n\n" +
-                    "Like Jupiter, Saturn is a gas giant composed mainly of hydrogen and helium. " + "It is the second largest planet in the Solar System.\n\n" +
+                    "Like Jupiter, Saturn is a gas giant composed mainly of hydrogen and helium. " +
+                    "It is the second largest planet in the Solar System.\n\n" +
                     "Saturn has many moons, including Titan, which possesses a thick atmosphere and lakes of liquid methane.",
             "Saturn formed billions of years ago from the same cloud of gas and dust that created the Solar System. " +
                     "Its rings may have formed from broken moons, comets, or leftover material trapped by Saturn’s gravity.\n\n" +
@@ -140,80 +147,40 @@ try {
             58232, 568, 1434, true, 285));
 
     addObject(new Planet("Uranus", "Planet",
-            "An ice giant that rotates on its side.", "Uranus is the seventh planet from the Sun and is classified as an ice giant. " +
+            "An ice giant that rotates on its side.",
+            "Uranus is the seventh planet from the Sun and is classified as an ice giant. " +
                     "Its atmosphere contains hydrogen, helium, and methane, which gives the planet its blue-green color.\n\n" +
                     "Unlike most planets, Uranus rotates almost completely on its side. " +
                     "Scientists believe a massive collision long ago may have caused this unusual tilt.\n\n" +
                     "Uranus has faint rings and many moons orbiting around it.",
-            "Uranus formed around 4.5 billion years ago in the outer Solar System. " + "Its composition includes icy materials such as water, ammonia, and methane.\n\n" +
+            "Uranus formed around 4.5 billion years ago in the outer Solar System. " +
+                    "Its composition includes icy materials such as water, ammonia, and methane.\n\n" +
                     "The extreme tilt of Uranus may have dramatically affected the planet’s seasons and atmosphere.",
-            "The only spacecraft to visit Uranus so far was Voyager 2 in 1986. " + "The mission captured important images and measurements of the planet and its moons.\n\n" +
+            "The only spacecraft to visit Uranus so far was Voyager 2 in 1986. " +
+                    "The mission captured important images and measurements of the planet and its moons.\n\n" +
                     "Scientists hope future missions will explore Uranus in much greater detail.",
-            "A season on Uranus lasts about 21 Earth years because of its unusual rotation. " + "The planet is one of the coldest worlds in the Solar System.\n\n" +
+            "A season on Uranus lasts about 21 Earth years because of its unusual rotation. " +
+                    "The planet is one of the coldest worlds in the Solar System.\n\n" +
                     "Uranus was the first planet discovered using a telescope.",
             25362, 86.8, 2871, true, 29));
 
-    addObject(new Planet("Neptune", "Planet", "The farthest major planet from the Sun.",
-            "Neptune is the eighth and farthest known planet from the Sun. " + "It is an ice giant with a deep blue atmosphere caused by methane gas.\n\n" +
-                    "Neptune experiences extremely powerful winds, some of the fastest in the Solar System. " + "Dark storm systems occasionally appear in its atmosphere.\n\n" +
+    addObject(new Planet("Neptune", "Planet",
+            "The farthest major planet from the Sun.",
+            "Neptune is the eighth and farthest known planet from the Sun. " +
+                    "It is an ice giant with a deep blue atmosphere caused by methane gas.\n\n" +
+                    "Neptune experiences extremely powerful winds, some of the fastest in the Solar System. " +
+                    "Dark storm systems occasionally appear in its atmosphere.\n\n" +
                     "The planet has rings and many moons, including Triton, which orbits Neptune in the opposite direction of the planet’s rotation.",
             "Neptune formed billions of years ago in the cold outer regions of the Solar System. " +
-                    "Its structure is believed to contain icy materials and a dense core.\n\n" + "Scientists think Neptune may have migrated farther away from the Sun during the Solar System’s early history.",
+                    "Its structure is believed to contain icy materials and a dense core.\n\n" +
+                    "Scientists think Neptune may have migrated farther away from the Sun during the Solar System’s early history.",
             "Voyager 2 became the first spacecraft to visit Neptune in 1989. " +
                     "The mission revealed detailed images of the planet, its rings, and Triton.\n\n" +
                     "Modern telescopes continue studying Neptune’s changing atmosphere and weather systems.",
-            "Neptune has the strongest winds of any planet in the Solar System. " + "A year on Neptune lasts about 165 Earth years.\n\n" +
+            "Neptune has the strongest winds of any planet in the Solar System. " +
+                    "A year on Neptune lasts about 165 Earth years.\n\n" +
                     "Triton is one of the coldest known objects in the Solar System and may contain underground oceans.",
             24622, 102, 4495, true, 16));
-    addObject(new Star("Sun", "Star",
-            "The star at the center of the Solar System.",
-
-            "The Sun is the star at the center of the Solar System. It provides the light and " +
-                    "heat that make life on Earth possible.\n\n" +
-                    "The Sun contains most of the mass of the Solar System and controls the motion " +
-                    "of planets, dwarf planets, asteroids, comets, and other objects through gravity.",
-
-            "The Sun is mainly made of hydrogen and helium. Hydrogen is used in nuclear fusion " +
-                    "inside the core, where it is changed into helium. This process releases a huge amount of energy.\n\n" +
-                    "Only a small part of the Sun is made of heavier elements such as oxygen, carbon, neon, and iron.",
-
-            "The average distance from Earth to the Sun is about 149.6 million kilometers. " +
-                    "This distance is also called one astronomical unit, or 1 AU.\n\n" +
-                    "Light from the Sun takes about 8 minutes to reach Earth.",
-
-            "The Sun is located in the Milky Way galaxy. It is not at the center of the galaxy, " +
-                    "but in one of its spiral arms. Compared with many stars, the Sun is an average-sized star, " +
-                    "but it is extremely important for our Solar System.",
-
-            "PHOTOSPHERE\n\n" +
-                    "The photosphere is a thin outermost layer of the Sun. " +
-                    "Below the photosphere, the Sun becomes opaque. However, " +
-                    "the photosphere itself is only slightly less opaque than the air on Earth.\n\n\n" +
-
-                    "CONVECTIVE ZONE\n\n" +
-                    "The convective zone carries hot material toward the surface of the Sun. " +
-                    "Once the material cools, it sinks back toward the hotter layers below. " +
-                    "This continuous movement transfers energy outward.\n\n\n" +
-
-                    "RADIATIVE ZONE\n\n" +
-                    "The radiative zone carries the intense heat of the core outward as thermal radiation. " +
-                    "Energy moves slowly through this region before reaching the outer layers of the Sun.\n\n\n" +
-
-                    "CORE\n\n" +
-                    "The core is the hottest and densest part of the Sun. " +
-                    "Nuclear fusion happens here, where hydrogen atoms combine to form helium. " +
-                    "This process releases enormous amounts of energy.\n\n\n" +
-
-                    "CORONA\n\n" +
-                    "The corona is the outer atmosphere of the Sun. " +
-                    "It extends millions of kilometers into space and becomes visible during a solar eclipse. " +
-                    "The corona is much hotter than the visible surface of the Sun.",
-
-            "The Sun contains more than 99% of the mass of the Solar System. " +
-                    "Light from the Sun takes about 8 minutes to reach Earth.",
-
-            696340, 1.989E30, 5778, 149.6
-    ));
     }  catch (InvalidSpaceObjectException e) {
         System.out.println("Error loading sample data: " + e.getMessage());
     }
