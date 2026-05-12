@@ -23,22 +23,35 @@ public abstract class SpaceObject {
         this.type = type;
         this.description = description;
     }
+    /**
+     * Copy constructor
+     */
     public SpaceObject(SpaceObject other) {
         this.name = other.name;
         this.type = other.type;
         this.description = other.description;
     }
+    /**
+     * Returns the name of the space object.
+     */
     public String getName() {
         return name;
     }
-
+    /**
+     * Returns the type of the space object.
+     */
     public String getType() {
         return type;
     }
-
+    /**
+     * Returns the description of the space object.
+     */
     public String getDescription() {
         return description;
     }
+    /**
+     * Compares two space objects for equality.
+     */
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -50,6 +63,9 @@ public abstract class SpaceObject {
         return this.name.equalsIgnoreCase(other.name)
                 && this.type.equalsIgnoreCase(other.type);
     }
+    /**
+     * Returns space object information as a string.
+     */
     public String toString() {
         return "Name: " + name +
                 "\nType: " + type +

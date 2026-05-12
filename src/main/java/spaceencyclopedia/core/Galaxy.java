@@ -18,21 +18,30 @@ public class Galaxy extends SpaceObject {
         this.galaxyType = galaxyType;
 
     }
-
+    /**
+     * Returns the number of stars in the galaxy.
+     */
     public int getNumberOfStars() {
         return numberOfStars;
     }
-
+    /**
+     * Returns the type of the galaxy.
+     */
     public String getGalaxyType() {
         return galaxyType;
     }
 
 
-
+    /**
+     * Returns galaxy information as a string.
+     */
     public String toString() {
         return super.toString() +
                 "\nNumber of stars: " + numberOfStars + "\nGalaxy type: " + galaxyType ;
     }
+    /**
+     * Compares two galaxy objects for equality.
+     */
     public boolean equals(Object otherObject){
         if(otherObject == null) return false;
         if(getClass() != otherObject.getClass()) {
@@ -40,8 +49,6 @@ public class Galaxy extends SpaceObject {
         }
         Galaxy other = (Galaxy) otherObject;
         return super.equals(otherObject) &&
-                this.numberOfStars == other.numberOfStars
-
-                && this.galaxyType.equals(other.galaxyType);
+                this.numberOfStars == other.numberOfStars && this.galaxyType.equals(other.galaxyType);
     }
 }

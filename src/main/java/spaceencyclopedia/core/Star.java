@@ -47,31 +47,58 @@ public class Star extends SpaceObject {
         this.temperature = temperature;
         this.distanceFromEarth = distanceFromEarth;
     }
-
+    /**
+     * Returns the radius of the star.
+     */
     public double getRadius() {return radius;}
-
+    /**
+     * Returns the mass of the star.
+     */
     public double getMass() {return mass;}
-
+    /**
+     * Returns the distance from Earth.
+     */
     public double getDistanceFromEarth() {
         return distanceFromEarth;
     }
-
+    /**
+     * Returns the temperature of the star.
+     */
     public double getTemperature() {
         return temperature;
     }
+
+    /**
+     * Returns the overview of the star.
+     */
     public String getOverview() {return overview;}
 
-
+    /**
+     * Returns information about the star’s composition.
+     */
     public String getComposition() {return composition;}
-
+    /**
+     * Returns distance information about the star.
+     */
     public String getDistanceInfo() {return distanceInfo;}
-
+    /**
+     * Returns galaxy information about the star.
+     */
     public String getGalaxyInfo() {
         return galaxyInfo;
     }
-    public String getStructure() {return structure;}
 
+    /**
+     * Returns structure information about the star.
+     */
+    public String getStructure() {return structure;}
+    /**
+     * Returns interesting facts about the star.
+     */
     public String getInterestingFacts() {return interestingFacts;}
+    /**
+     * Returns star information as a string.
+     */
     public String toString() {
         return super.toString() +
                 "\nRadius: " + radius +

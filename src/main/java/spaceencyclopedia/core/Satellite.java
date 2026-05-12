@@ -33,38 +33,58 @@ public class Satellite extends SpaceObject {
         this.distanceFromPlanet = distanceFromPlanet;
         this.natural = natural;
     }
-
+    /**
+     * Returns the radius of the satellite.
+     */
     public double getRadius() {
         return radius;
     }
-
+    /**
+     * Returns the distance from the parent planet.
+     */
     public double getDistanceFromPlanet() {
         return distanceFromPlanet;
     }
-
+    /**
+     * Returns true if the satellite is natural.
+     */
     public boolean isNatural() {
         return natural;
     }
-
+    /**
+     * Returns the parent planet of the satellite.
+     */
     public String getParentPlanet() {
         return parentPlanet;
     }
-
+    /**
+     * Returns the overview of the satellite.
+     */
     public String getOverview() {
         return overview;
     }
-
+    /**
+     * Returns discovery information about the satellite.
+     */
     public String getDiscovery() {
         return discovery;
     }
 
+    /**
+     * Returns exploration information about the satellite.
+     */
     public String getExploration() {
         return exploration;
     }
-
+    /**
+     * Returns interesting facts about the satellite.
+     */
     public String getInterestingFacts() {
         return interestingFacts;
     }
+    /**
+     * Returns satellite information as a string.
+     */
     public String toString() {
         return getName() + " (" + getType() + ")\n" + "Description: " + getDescription() + "\n" + "Parent Planet: " + parentPlanet + "\n" + "Radius: " + radius + " km\n" +
                 "Distance from planet: " + distanceFromPlanet + " km\n" + "Natural satellite: " + natural + "\n" + "Overview: " + overview + "\n" +

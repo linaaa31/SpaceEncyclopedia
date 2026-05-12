@@ -46,7 +46,9 @@ public class Planet extends SpaceObject {
         this.numberOfSatellites = numberOfSatellites;
         this.satellites = new ArrayList<>();
     }
-
+    /**
+     * Copy constructor
+     */
     public Planet(Planet other)
             throws InvalidSpaceObjectException {
         super(other.getName(), other.getType(), other.getDescription());
@@ -62,51 +64,76 @@ public class Planet extends SpaceObject {
         this.satellites =
                 new ArrayList<>(other.satellites);
     }
-
+    /**
+     * Adds a satellite to the planet.
+     */
     public void addSatellite(Satellite satellite) {
         satellites.add(satellite);
     }
-
+    /**
+     * Returns the satellites of the planet.
+     */
     public ArrayList<Satellite> getSatellites() {
         return satellites;
     }
-
+    /**
+     * Returns the radius of the planet.
+     */
     public double getRadius() {
         return radius;
     }
 
+    /**
+     * Returns the mass of the planet.
+     */
     public double getMass() {
         return mass;
     }
-
+    /**
+     * Returns the distance from the Sun.
+     */
     public double getDistanceFromSun() {
         return distanceFromSun;
     }
-
+    /**
+     * Returns true if the planet has rings.
+     */
     public boolean getHasRings() {
         return hasRings;
     }
-
+    /**
+     * Returns the number of satellites.
+     */
     public int getNumberOfSatellites() {
         return numberOfSatellites;
     }
-
+    /**
+     * Returns the overview of the planet.
+     */
     public String getOverview() {
         return overview;
     }
-
+    /**
+     * Returns information about planet formation.
+     */
     public String getFormation() {
         return formation;
     }
-
+    /**
+     * Returns information about planet exploration.
+     */
     public String getExploration() {
         return exploration;
     }
-
+    /**
+     * Returns interesting facts about the planet.
+     */
     public String getInterestingFacts() {
         return interestingFacts;
     }
-
+    /**
+     * Returns planet information as a string.
+     */
     public String toString() {
         return super.toString()
                 + "\nOverview: " + overview + "\nFormation: " + formation + "\nExploration: " + exploration
@@ -116,6 +143,9 @@ public class Planet extends SpaceObject {
                 + "\nSatellites: " + satellites;
     }
 
+    /**
+     * Compares two planet objects for equality.
+     */
     public boolean equals(Object otherObject) {
         if (otherObject == null) {
             return false;

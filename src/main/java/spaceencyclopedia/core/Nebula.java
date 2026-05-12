@@ -36,7 +36,9 @@ public class Nebula extends SpaceObject {
         this.nebulaType = nebulaType;
         this.starFormingRegion = starFormingRegion;
     }
-
+    /**
+     * Copy constructor
+     */
     public Nebula(Nebula other)
             throws InvalidSpaceObjectException {
         super(other.getName(), other.getType(), other.getDescription());
@@ -45,35 +47,51 @@ public class Nebula extends SpaceObject {
         this.nebulaType = other.nebulaType;
         this.starFormingRegion = other.starFormingRegion;
     }
-
+    /**
+     * Returns the distance from Earth.
+     */
     public double getDistanceFromEarth() {
         return distanceFromEarth;
     }
-
+    /**
+     * Returns the type of the nebula.
+     */
     public String getNebulaType() {
         return nebulaType;
     }
-
+    /**
+     * Returns true if the nebula is a star-forming region.
+     */
     public boolean isStarFormingRegion() {
         return starFormingRegion;
     }
-
+    /**
+     * Returns the overview of the nebula.
+     */
     public String getOverview() {
         return overview;
     }
-
+    /**
+     * Returns information about nebula formation.
+     */
     public String getFormation() {
         return formation;
     }
-
+    /**
+     * Returns the importance of the nebula.
+     */
     public String getImportance() {
         return importance;
     }
-
+    /**
+     * Returns interesting facts about the nebula.
+     */
     public String getInterestingFacts() {
         return interestingFacts;
     }
-
+    /**
+     * Returns nebula information as a string.
+     */
     public String toString() {
         return super.toString() +
                 "\nDistance from Earth: " + distanceFromEarth +
