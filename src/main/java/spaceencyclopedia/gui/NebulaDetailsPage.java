@@ -82,12 +82,16 @@ public class NebulaDetailsPage extends BasePage {
         infoArea.setMaximumSize(new Dimension(1200, Integer.MAX_VALUE));
         infoArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton favoriteButton = createButton("Add to Favorites");
+        boolean isFavorite = manager.getFavoritesManager().getFavorites().contains(nebula);
+
+        JButton favoriteButton = createButton(isFavorite ? "Added to Favorites" : "Add to Favorites");
 
         favoriteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                manager.getFavoritesManager().addFavorite(nebula);
-                favoriteButton.setText("Added to Favorites");
+                if (!manager.getFavoritesManager().getFavorites().contains(nebula)) {
+                    manager.getFavoritesManager().addFavorite(nebula);
+                    favoriteButton.setText("Added to Favorites");
+                }
             }
         });
 

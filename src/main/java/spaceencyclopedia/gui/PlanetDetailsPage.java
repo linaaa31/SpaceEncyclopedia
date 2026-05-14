@@ -92,12 +92,15 @@ public class PlanetDetailsPage extends BasePage {
         infoArea.setWrapStyleWord(true);
         infoArea.setMaximumSize(new Dimension(1200, Integer.MAX_VALUE));
         infoArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JButton favoriteButton = createButton("Add to Favorites");
+        boolean isFavorite = manager.getFavoritesManager().getFavorites().contains(planet);
 
+        JButton favoriteButton = createButton(isFavorite ? "Added to Favorites" : "Add to Favorites");
         favoriteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                manager.getFavoritesManager().addFavorite(planet);
-                favoriteButton.setText("Added to Favorites");
+                if (!manager.getFavoritesManager().getFavorites().contains(planet)) {
+                    manager.getFavoritesManager().addFavorite(planet);
+                    favoriteButton.setText("Added to Favorites");
+                }
             }
         });
 

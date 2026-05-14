@@ -698,7 +698,7 @@ try {
             "The comet is named after astronomer Edmond Halley who correctly predicted its return. " +
                     "Its next appearance near Earth is expected in 2061.",
             76, true,
-            "/spaceencyclopedia/images/halley.jpg"));
+            "/spaceencyclopedia/images/Halley's Comet.png"));
     addObject(new Comet("Comet Hale-Bopp", "Comet",
             "One of the brightest comets of the 20th century.",
             "One of the brightest comets of the 20th century." +
@@ -712,7 +712,7 @@ try {
             "Millions of people observed Hale–Bopp during 1996 and 1997 without telescopes.",
             2533,
             true,
-            "/spaceencyclopedia/images/Comet_Hale-Bopp.jpg"));
+            "/spaceencyclopedia/images/Comet Hale-Bopp.png"));
     addObject(new Comet("Comet NEOWISE", "Comet",
             "A bright comet visible in 2020.",
             "A bright comet visible in 2020." +
@@ -725,7 +725,7 @@ try {
             "Scientists used the comet to study comet composition and dust behavior.",
             "Photographers around the world captured impressive images of NEOWISE.",
             6800, true,
-            "/spaceencyclopedia/images/Comet-NEOWISE.jpg"));
+            "/spaceencyclopedia/images/Comet NEOWISE.png"));
     addObject(new Comet("Comet Shoemaker-Levy 9", "Comet",
             "A comet famous for colliding with Jupiter.",
             "A comet famous for colliding with Jupiter."+
@@ -738,7 +738,7 @@ try {
             "This was the first direct observation of two Solar System bodies colliding.",
             2,
             false,
-            "/spaceencyclopedia/images/Comet Shoemaker–Levy 9.jpg"));
+            "/spaceencyclopedia/images/Comet Shoemaker-Levy 9.png"));
     addObject(new Comet("Comet 67P", "Comet", "The comet visited by the Rosetta spacecraft.",
             "The comet visited by the Rosetta spacecraft."+
                     "Comet 67P became famous because of the European Space Agency Rosetta mission."+
@@ -751,7 +751,27 @@ try {
             "In 2014 the Philae probe successfully landed on the comet’s surface.",
             6.45,
             false,
-            "/spaceencyclopedia/images/Comet 67P Churyumov–Gerasimenko.jpg"));
+            "/spaceencyclopedia/images/Comet 67P.png"));
+    addObject(new Asteroid("Vesta", "Asteroid",
+            "Vesta is one of the largest objects in the Asteroid Belt and is sometimes described " +
+                    "as a protoplanet because of its layered internal structure. " +
+                    "Its surface contains enormous craters created by powerful collisions that occurred " +
+                    "millions of years ago. NASA’s Dawn spacecraft studied Vesta in detail and discovered " +
+                    "mountains, valleys, and signs of ancient volcanic activity.",
+            525, 353));
+
+    addObject(new Asteroid("Eros", "Asteroid",
+            "Eros is a near-Earth asteroid discovered in 1898. It became historically important " +
+                    "because it was the first asteroid successfully orbited and landed on by a spacecraft " +
+                    "during the NEAR Shoemaker mission. Eros has an elongated shape and follows an orbit " +
+                    "that occasionally brings it relatively close to Earth.",
+            16.8, 218));
+    addObject(new Asteroid("Pallas", "Asteroid",
+            "Pallas is one of the largest asteroids in the Solar System and was discovered in 1802. " +
+                    "Unlike many asteroids, it has a strongly tilted orbit around the Sun. Scientists believe " +
+                    "that Pallas may contain water-rich materials beneath its surface, making it an important " +
+                    "object for scientific research.",
+            512, 414));
 }  catch (InvalidSpaceObjectException e) {
         System.out.println("Error loading sample data: " + e.getMessage());
     }
@@ -872,5 +892,8 @@ try {
             }
         }
         return nebulae;
+    }
+    public ArrayList<SpaceObject> getObjects() {
+        return objects;
     }
 }

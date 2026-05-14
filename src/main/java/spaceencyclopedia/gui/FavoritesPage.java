@@ -54,6 +54,8 @@ public class FavoritesPage extends BasePage {
             addGroup(contentPanel, "Asteroids", Asteroid.class, favorites);
             addGroup(contentPanel, "Black Holes", BlackHole.class, favorites);
             addGroup(contentPanel, "Nebulae", Nebula.class, favorites);
+            addGroup(contentPanel, "Comets", Comet.class, favorites);
+            addGroup(contentPanel, "Asteroids", Asteroid.class, favorites);
         }
 
         JButton backButton = createButton("Back");
@@ -73,12 +75,8 @@ public class FavoritesPage extends BasePage {
         add(backgroundPanel);
     }
 
-    private void addGroup(JPanel contentPanel, String groupName,
-                          Class<?> groupClass,
-                          ArrayList<SpaceObject> favorites) {
-
+    private void addGroup(JPanel contentPanel, String groupName, Class<?> groupClass, ArrayList<SpaceObject> favorites) {
         boolean hasObjects = false;
-
         for (SpaceObject object : favorites) {
             if (groupClass.isInstance(object)) {
                 hasObjects = true;

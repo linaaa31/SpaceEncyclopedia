@@ -84,10 +84,11 @@ public class StarDetailsPage extends BasePage {
         JTextArea factsText = createTextArea(
                 "INTERESTING FACTS\n\n" + star.getInterestingFacts()
         );
-        JButton favoriteButton = createButton("Add to Favorites");
+        JButton favoriteButton = createButton(manager.getFavoritesManager().getFavorites().contains(star) ? "Added to Favorites"
+                        : "Add to Favorites");
 
-        favoriteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
+        favoriteButton.addActionListener(e -> {
+            if (!manager.getFavoritesManager().getFavorites().contains(star)) {
                 manager.getFavoritesManager().addFavorite(star);
                 favoriteButton.setText("Added to Favorites");
             }

@@ -29,8 +29,9 @@ public class CometsPage extends BasePage {
         contentPanel.setBorder(new EmptyBorder(40, 70, 40, 70));
 
         JScrollPane scrollPane = new JScrollPane(contentPanel);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setOpaque(false);
-
         scrollPane.getViewport().setOpaque(false);
 
         scrollPane.setBorder(null);
@@ -93,11 +94,12 @@ public class CometsPage extends BasePage {
 
     private JPanel createCometPanel(Comet comet) {
 
-        JPanel panel = new JPanel(new BorderLayout(30, 20));
+        JPanel panel = new JPanel(new BorderLayout(25, 15));
         panel.setOpaque(false);
-        JLabel imageLabel = createImageLabel(comet.getImagePath(), 220);
-
-
+        panel.setMaximumSize(new Dimension(1100, Integer.MAX_VALUE));
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel imageLabel = createImageLabel(comet.getImagePath(), 230);
+        imageLabel.setVerticalAlignment(SwingConstants.TOP);
         JPanel textPanel = new JPanel();
         textPanel.setOpaque(false);
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
@@ -107,18 +109,29 @@ public class CometsPage extends BasePage {
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JTextArea description = createTextArea(comet.getOverview());
+        JTextArea description = createTextArea(
+                comet.getOverview() + "\n\n" +
+                        "Origin:\n" + comet.getOriginInfo() + "\n\n" +
+                        "Tail Information:\n" + comet.getTailInfo() + "\n\n" +
+                        "Scientific Importance:\n" + comet.getScientificImportance() + "\n\n" +
+                        "Interesting Facts:\n" + comet.getInterestingFacts()
+        );
+
         description.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-
-        JTextArea facts = createTextArea(comet.getInterestingFacts());
-        facts.setAlignmentX(Component.LEFT_ALIGNMENT);
-
+        boolean isFavorite = manager.getFavoritesManager().getFavorites().contains(comet);
+        JButton favoriteButton = createButton(isFavorite ? "Added to Favorites" : "Add to Favorites");
+        favoriteButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        favoriteButton.addActionListener(e -> {
+            if (!manager.getFavoritesManager().getFavorites().contains(comet)) {
+                manager.getFavoritesManager().addFavorite(comet);
+                favoriteButton.setText("Added to Favorites");
+            }
+        });
         textPanel.add(nameLabel);
         textPanel.add(Box.createVerticalStrut(10));
         textPanel.add(description);
-        textPanel.add(Box.createVerticalStrut(10));
-        textPanel.add(facts);
+        textPanel.add(Box.createVerticalStrut(15));
+        textPanel.add(favoriteButton);
         panel.add(imageLabel, BorderLayout.WEST);
         panel.add(textPanel, BorderLayout.CENTER);
 
@@ -126,26 +139,23 @@ public class CometsPage extends BasePage {
     }
 
     private JTextArea createTextArea(String text) {
-
         JTextArea textArea = new JTextArea(text);
         textArea.setEditable(false);
         textArea.setOpaque(false);
         textArea.setForeground(Color.WHITE);
-        textArea.setFont(new Font("Serif", Font.PLAIN, 24));
-
+        textArea.setFont(new Font("Serif", Font.PLAIN, 22));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setMaximumSize(new Dimension(1200, Integer.MAX_VALUE));
+        textArea.setMaximumSize(new Dimension(850, Integer.MAX_VALUE));
+        textArea.setPreferredSize(new Dimension(850, textArea.getPreferredSize().height));
+
         return textArea;
     }
 
     private JLabel createImageLabel(String path, int width) {
-
-        if (path.equals("default")) {
-            path = "/spaceencyclopedia/images/default.jpg";
-        }
         JLabel label = new JLabel();
-
+        label.setPreferredSize(new Dimension(width + 30, 180));
+        label.setVerticalAlignment(SwingConstants.TOP);
         java.net.URL imageURL = getClass().getResource(path);
         if (imageURL != null) {
             ImageIcon icon = new ImageIcon(imageURL);

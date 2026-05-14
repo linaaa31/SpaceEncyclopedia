@@ -5,7 +5,10 @@ import spaceencyclopedia.manager.EncyclopediaManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class SearchPage extends BasePage {
 
@@ -32,6 +35,15 @@ public class SearchPage extends BasePage {
         searchField.setFont(new Font("Serif", Font.PLAIN, 26));
         searchField.setMaximumSize(new Dimension(600, 50));
 
+        DefaultListModel<String> hintModel = new DefaultListModel<>();
+        JList<String> hintList = new JList<>(hintModel);
+        hintList.setFont(new Font("Serif", Font.PLAIN, 22));
+        hintList.setVisibleRowCount(5);
+
+        JScrollPane hintScrollPane = new JScrollPane(hintList);
+        hintScrollPane.setMaximumSize(new Dimension(600, 150));
+        hintScrollPane.setVisible(false);
+
         JButton searchButton = createButton("Search");
         searchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -47,38 +59,72 @@ public class SearchPage extends BasePage {
 
         final SpaceObject[] foundObject = new SpaceObject[1];
 
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                String name = searchField.getText().trim();
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                updateHints();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                updateHints();
+            }
+            public void changedUpdate(DocumentEvent e) {
+                updateHints();
+            }
+            private void updateHints() {
+                String text = searchField.getText().trim().toLowerCase();
+                hintModel.clear();
 
-                SpaceObject object = manager.searchByName(name);
-                foundObject[0] = object;
-                if (object == null) {
-                    resultLabel.setText("Object not found.");
-                    openButton.setVisible(false);
-                } else {
-                    resultLabel.setText("Found: " + object.getName() + " (" + object.getType() + ")");
-                    openButton.setVisible(true);
+                if (text.isEmpty()) {
+                    hintScrollPane.setVisible(false);
+                    contentPanel.revalidate();
+                    contentPanel.repaint();
+                    return;
                 }
+
+                for (SpaceObject object : manager.getObjects()) {
+                    if (object.getName().toLowerCase().startsWith(text)) {
+                        hintModel.addElement(object.getName());
+                    }
+                }
+                hintScrollPane.setVisible(!hintModel.isEmpty());
+                contentPanel.revalidate();
+                contentPanel.repaint();
             }
         });
 
-        openButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                openDetailsPage(foundObject[0]);
+        hintList.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && hintList.getSelectedValue() != null) {
+                searchField.setText(hintList.getSelectedValue());
+                hintScrollPane.setVisible(false);
             }
         });
 
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                new MainMenuPage(manager).setVisible(true);
-                dispose();
+        searchButton.addActionListener(e -> {
+            String name = searchField.getText().trim();
+
+            SpaceObject object = manager.searchByName(name);
+            foundObject[0] = object;
+
+            if (object == null) {
+                resultLabel.setText("Object not found.");
+                openButton.setVisible(false);
+            } else {
+                resultLabel.setText("Found: " + object.getName() + " (" + object.getType() + ")");
+                openButton.setVisible(true);
             }
+        });
+
+        openButton.addActionListener(e -> openDetailsPage(foundObject[0]));
+
+        backButton.addActionListener(e -> {
+            new MainMenuPage(manager).setVisible(true);
+            dispose();
         });
 
         contentPanel.add(title);
         contentPanel.add(Box.createVerticalStrut(40));
         contentPanel.add(searchField);
+        contentPanel.add(Box.createVerticalStrut(10));
+        contentPanel.add(hintScrollPane);
         contentPanel.add(Box.createVerticalStrut(25));
         contentPanel.add(searchButton);
         contentPanel.add(Box.createVerticalStrut(30));
@@ -103,7 +149,10 @@ public class SearchPage extends BasePage {
             new NebulaDetailsPage((Nebula) object, manager).setVisible(true);
         } else if (object instanceof Asteroid) {
             new AsteroidsPage(manager).setVisible(true);
+        } else if (object instanceof Comet) {
+            new CometsPage(manager).setVisible(true);
         }
+
         dispose();
     }
 }

@@ -104,10 +104,11 @@ public class SatelliteDetailsPage extends BasePage {
         infoArea.setWrapStyleWord(true);
         infoArea.setMaximumSize(new Dimension(1200, Integer.MAX_VALUE));
         infoArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JButton favoriteButton = createButton("Add to Favorites");
+        JButton favoriteButton = createButton(manager.getFavoritesManager().getFavorites().contains(satellite) ? "Added to Favorites"
+                        : "Add to Favorites");
 
-        favoriteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
+        favoriteButton.addActionListener(e -> {
+            if (!manager.getFavoritesManager().getFavorites().contains(satellite)) {
                 manager.getFavoritesManager().addFavorite(satellite);
                 favoriteButton.setText("Added to Favorites");
             }
