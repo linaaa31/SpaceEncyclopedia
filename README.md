@@ -82,7 +82,10 @@ java -cp src/main/java spaceencyclopedia.Main
 ```
 
 ---
+## Presentation
+https://canva.link/2paphrx52qtoj6e
 
+---
 ## Authors
 
 - Lina Badalyan
